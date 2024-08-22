@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+main {
+    flex: 1;
+}
+.color{
+    background-color: #004f9f; 
+    background-color: #662483;
+    background-color: #ce1537;
+    background-color: #f07e07;
+    background-color: #f4c000;
+    background-color: #3aaa35;
+    background-color: #e0a448 ;
+    background-color: #e9c999 ;
+    background-color: #334c83 ;
+    background-color: #52668d ;
+    background-color: #a0aec3 ;
+}
+.logo{
+    width: 80px;
+}
+
+.call-end-destacado {
+    background-color: rgb(27, 164, 168); 
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    border: 2px solid rgb(10, 10, 10);
+    animation: resaltar 1s infinite alternate; 
+}
+
+@keyframes resaltar {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.02); /* Escala ligeramente el elemento */
+    }
+}
+/* .fondoMain{
+    background-image: url('logoCpc.png');  
+    display: flex;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-position: center;
+}  */
+.nav{
+    background-color: #59a0e7;
+}
+.active{
+    color: aliceblue;
+}
+.ultimoLlamado{
+    background-color: #004f9f;
+    margin-top: 5px;
+    /* background: radial-gradient(circle,#f4c000,#f07e07); */
+}
+.llamados{
+    background-color: #59a0e7;
+    opacity: 0.98;
+    margin-top: 5px;
+}
+
+.menu{
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .requisitos{
+        display: none;
+    }
+    .burger{
+        display: flex;
+        flex-direction: column;
+    }
+    .menu{
+        display: flex;
+        justify-content: flex-end;
+    }
+    .cerrado{
+        display: none;
+        transform: translateY(-100%);
+    }
+    .abierto{
+        display: flex;
+        flex-direction: column;
+        align-content: flex-end;
+        transform: translateY(0);
+    }
+}
