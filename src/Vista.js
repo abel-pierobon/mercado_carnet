@@ -96,7 +96,7 @@ function Vista() {
     };
 
     return (
-        <section className="flex justify-center items-start gap-8">
+        <section className="flex justify-center items-start space-x-5 gap-8">
             <div className=" flex flex-col h-screen w-2/3">
                 {dataLlamado.length === 0 ? (
                     <div className="flex justify-center">
