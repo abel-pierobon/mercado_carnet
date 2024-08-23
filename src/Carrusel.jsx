@@ -13,11 +13,11 @@ const Carrusel = () => {
             );
         }, 15000); 
 
-        return () => clearInterval(intervalo); // Limpia el intervalo al desmontar el componente
+        return () => clearInterval(intervalo); 
     }, [componentes.length]);
 
     return (
-        <div className="w-full h-full">
+        <div className="w-full h-[350px]">
             {componentes[indiceActivo]}
         </div>
     );

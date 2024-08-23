@@ -106,7 +106,7 @@ function Vista() {
                     </div>
                 ) : (
                     dataLlamado.map((item2, i) => {
-                        const esUltimo = item2.id === data[0]?.id; // Compara con el primer turno de "data"
+                        const esUltimo = item2.id === data[0]?.id; 
                         return (
                             <CallEnd
                                 key={i}
@@ -117,35 +117,35 @@ function Vista() {
                     })
                 )}
                 <div className=" flex justify-center items-center mt-12">
-                    <div className="w-1/2">
+                    <div className="w-1/2 shadow-lg shadow-[#59a0e7] object-cover">
                         <Carrusel
                             components={[<EventosNuevos />, <Descargas />]}
                         />
                     </div>
-                    <div className="w-1/2">
+                    <div className="w-1/2 shadow-lg shadow-[#59a0e7] object-cover">
                         <Requisitos />
                     </div>
                 </div>
                 <div>
-                {usuario ? (
-                    <div className="">
-                        {data.length === 0 ? (
-                            <div className="flex justify-center">
-                                <p></p>
-                            </div>
-                        ) : (
-                            <button
-                                onClick={eliminarTodosLosLlamados}
-                                className="rounded-md border border-radius border-black-500 bg-red-500 text-white p-1 mt-2"
-                            >
-                                Limpiar Turnero
-                            </button>
-                        )}
-                    </div>
-                ) : (
-                    <p></p>
-                )}
-            </div>
+                    {usuario ? (
+                        <div className="">
+                            {data.length === 0 ? (
+                                <div className="flex justify-center">
+                                    <p></p>
+                                </div>
+                            ) : (
+                                <button
+                                    onClick={eliminarTodosLosLlamados}
+                                    className="rounded-md border border-radius border-black-500 bg-red-500 text-white p-1 mt-2"
+                                >
+                                    Limpiar Turnero
+                                </button>
+                            )}
+                        </div>
+                    ) : (
+                        <p></p>
+                    )}
+                </div>
             </div>
             <div className="flex justify-center">
                 <div className=" w-1/1 ">
@@ -162,7 +162,6 @@ function Vista() {
                     )}
                 </div>
             </div>
-            
         </section>
     );
 }

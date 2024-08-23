@@ -2,7 +2,7 @@ import React from 'react'
 
 function Requisitos() {
     return (
-        <div className='border border-black card shadow-md rounded-md h-full  p-5 bg-[#59a0e7] '>
+        <div className='border border-black card shadow-lg shadow-[#59a0e7] rounded-md p-5 bg-[#59a0e7] h-[350px] '>
             <h2 className='font-extrabold text-sm'> DOCUMENTACIÓN A PRESENTAR PARA RENOVACIÓN CARNET DE CONDUCIR</h2>
             <ul className='font-semibold text-base'>
                 <li>Informe médico psico-físico para mayores de 70 años (tiene una validez de 6 meses).</li>
