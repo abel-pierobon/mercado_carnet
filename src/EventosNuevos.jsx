@@ -1,27 +1,27 @@
-import qrInstagram from './qrInstagram.png';
-import qrFacebook from './qrFacebook.png';
-
+import dengue from './img/dengue.jpeg'
+import masterclasss from './img/masterclass.jpeg'
+import atencion from './img/atencion.jpeg'
+import React, { useState, useEffect } from 'react';
 function EventosNuevos() {
+    const componentes = [dengue, masterclasss, atencion];
+    const [indiceActivo, setIndiceActivo] = useState(0);
+
+    useEffect(() => {
+        const intervalo = setInterval(() => {
+            setIndiceActivo((prevIndice) =>
+                prevIndice === componentes.length - 1 ? 0 : prevIndice + 1
+            );
+        }, 5000); 
+
+        return () => clearInterval(intervalo); 
+    }, [componentes.length]);
     return (
-        <div className="flex flex-col items-center border border-black rounded-md justify-start p-4 mx-1 bg-[#59a0e7] h-[350px] ">
-            <h2 className="text-center text-2xl text-gray-900  mb-2 font-bold">
-                Seguinos en nuestras Redes
-            </h2>
-            <div className="flex justify-center space-x-10">
+        <div className="flex justify-center mx-1">
                 <img
-                    src={qrInstagram}
-                    alt="qrInstagram"
-                    className="w-56 h-56 border border-black rounded-md bg-white"
+                    src={componentes[indiceActivo]}
+                    alt="eventos"
+                    className="w-96 h-96 border border-black rounded-lg p-1"
                 />
-                <img
-                    src={qrFacebook}
-                    alt="qrFacebook"
-                    className="w-56 h-56 p-4 border border-black rounded-md bg-white"
-                />
-            </div>
-            <h2 className="text-center text-2xl mt-2 text-gray-900 font-bold">
-                y enterate de todas las novedades
-            </h2>
         </div>
     );
 }

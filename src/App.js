@@ -19,10 +19,8 @@ function App() {
                         closeOnClick={true}
                         richColors
                     />
-                    <main className="flex-grow">
                         <Main />
-                    </main>
-                        <Footer />
+                    <Footer />
                 </div>
             </ContextTurneroProvider>
         </BrowserRouter>

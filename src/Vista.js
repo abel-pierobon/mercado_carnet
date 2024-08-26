@@ -116,14 +116,13 @@ function Vista() {
                         );
                     })
                 )}
-                <div className=" flex justify-center items-center mt-12">
-                    <div className="w-1/2 shadow-lg shadow-[#59a0e7] object-cover">
+                <div className="hidden md:flex justify-center items-center mt-12">
+                    <div className=" w-1/2 h-full">
                         <Carrusel
-                            components={[<EventosNuevos />, <Descargas />]}
                         />
                     </div>
-                    <div className="w-1/2 shadow-lg shadow-[#59a0e7] object-cover">
-                        <Requisitos />
+                    <div className="w-1/2 h-96">
+                        <EventosNuevos />
                     </div>
                 </div>
                 <div>

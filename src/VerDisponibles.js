@@ -55,9 +55,9 @@ function VerDisponibles({ turnos }) {
                 </div>
                 <select onChange={handlePuestoChange}>
                     <option value="select">Elige lugar</option>
-                    <option value="Puesto 1">Puesto 1</option>
-                    <option value="Puesto 2">Puesto 2</option>
-                    <option value="Puesto 3">Puesto 3</option>
+                    <option value="Ventanilla 1">Ventanilla 1</option>
+                    <option value="Ventanilla 2">Ventanilla 2</option>
+                    <option value="Emisión Carnet">Emisión Carnet</option>
                     <option value="Consultorio Médico">Consultorio Médico</option>
                 </select>
                 <button className="rounded-md border border-radius border-black bg-green-500 p-1 mt-2" onClick={llamar}>
