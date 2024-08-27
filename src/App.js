@@ -9,7 +9,7 @@ function App() {
     return (
         <BrowserRouter>
             <ContextTurneroProvider>
-                <div id="root" className="flex flex-col min-h-screen">
+                <div id="root" className="flex flex-col">
                     <NavBar />
                     <Toaster
                         position="bottom-right"
@@ -20,7 +20,7 @@ function App() {
                         richColors
                     />
                         <Main />
-                    <Footer />
+                    {/* <Footer /> */}
                 </div>
             </ContextTurneroProvider>
         </BrowserRouter>

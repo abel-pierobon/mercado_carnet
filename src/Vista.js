@@ -16,6 +16,8 @@ import Requisitos from './Requisitos';
 import EventosNuevos from './EventosNuevos';
 import Descargas from './Descargas';
 import Carrusel from './Carrusel';
+import WebMunicipalidad from './WebMunicipalidad';
+import Footer from './Footer';
 
 function Vista() {
     const [data, setData] = useState([]);
@@ -94,74 +96,77 @@ function Vista() {
         });
         setData([]);
     };
-
+    
     return (
-        <section className="flex justify-center items-start space-x-5 gap-8">
-            <div className=" flex flex-col h-screen w-2/3">
-                {dataLlamado.length === 0 ? (
-                    <div className="flex justify-center">
-                        <p className="font-bold texto-aparecer-desaparecer">
-                            No se ha llamado ningún turno
-                        </p>
-                    </div>
-                ) : (
-                    dataLlamado.map((item2, i) => {
-                        const esUltimo = item2.id === data[0]?.id; 
-                        return (
-                            <CallEnd
-                                key={i}
-                                turno={item2}
-                                esUltimo={esUltimo}
-                            />
-                        );
-                    })
-                )}
-                <div className="hidden md:flex justify-center items-center mt-12">
-                    <div className=" w-1/2 h-full">
-                        <Carrusel
-                        />
-                    </div>
-                    <div className="w-1/2 h-96">
-                        <EventosNuevos />
-                    </div>
-                </div>
-                <div>
-                    {usuario ? (
-                        <div className="">
-                            {data.length === 0 ? (
-                                <div className="flex justify-center">
-                                    <p></p>
-                                </div>
-                            ) : (
-                                <button
-                                    onClick={eliminarTodosLosLlamados}
-                                    className="rounded-md border border-radius border-black-500 bg-red-500 text-white p-1 mt-2"
-                                >
-                                    Limpiar Turnero
-                                </button>
-                            )}
-                        </div>
-                    ) : (
-                        <p></p>
-                    )}
-                </div>
-            </div>
+        <section className="grid grid-cols-[min-content,min-content,auto,auto,auto,min-content] grid-rows-[auto,min-content,min-content,auto,auto,auto,min-content,auto] gap-5">
+    <div className="col-span-4 row-span-2 overflow-hidden">
+        {dataLlamado.length === 0 ? (
             <div className="flex justify-center">
-                <div className=" w-1/1 ">
+                <p className="font-bold texto-aparecer-desaparecer">
+                    No se ha llamado ningún turno
+                </p>
+            </div>
+        ) : (
+            dataLlamado.map((item2, i) => {
+                const esUltimo = item2.id === data[0]?.id; 
+                return (
+                    <CallEnd
+                        key={i}
+                        turno={item2}
+                        esUltimo={esUltimo}
+                    />
+                );
+            })
+        )}
+        <div className="hidden 2xl:flex justify-center items-center mt-12 overflow-hidden">
+            <div className="w-full">
+                <WebMunicipalidad />
+            </div>
+        </div>
+        <div className="row-start-7">
+            {usuario ? (
+                <div>
                     {data.length === 0 ? (
                         <div className="flex justify-center">
-                            <p className="font-bold texto-aparecer-desaparecer"></p>
+                            <p></p>
                         </div>
-                    ) : data.length === 1 ? (
-                        <p></p>
                     ) : (
-                        data.map((item, i) => {
-                            return <Call key={i} turno={item} />;
-                        })
+                        <button
+                            onClick={eliminarTodosLosLlamados}
+                            className="rounded-md border border-radius border-black-500 bg-red-500 text-white p-1 mt-2"
+                        >
+                            Limpiar Turnero
+                        </button>
                     )}
                 </div>
-            </div>
-        </section>
+            ) : (
+                <p></p>
+            )}
+        </div>
+    </div>
+    <div className="col-span-2 row-span-5 col-start-5 overflow-hidden">
+        <div className="w-full">
+            {data.length === 0 ? (
+                <div className="flex justify-center">
+                    <p className="font-bold texto-aparecer-desaparecer"></p>
+                </div>
+            ) : data.length === 1 ? (
+                <p></p>
+            ) : (
+                data.map((item, i) => {
+                    return <Call key={i} turno={item} />;
+                })
+            )}
+        </div>
+        <div className="hidden 2xl:col-span-4 row-span-3 row-start-4">
+            <Carrusel />
+        </div>
+    </div>
+    <div className="col-span-6 row-start-8">
+        <Footer />
+    </div>
+</section>
+
     );
 }
 
