@@ -1,7 +1,7 @@
-import dengue from './img/dengue.jpeg';
-import masterclasss from './img/masterclass.jpeg';
-import atencion from './img/atencion.jpeg';
-import requisitos from './requisitosImagen.png';
+// import dengue from './img/dengue.jpeg';
+// import masterclasss from './img/masterclass.jpeg';
+// import atencion from './img/atencion.jpeg';
+// import requisitos from './requisitosImagen.png';
 
 import React, { useState, useEffect } from 'react';
 function EventosNuevos() {
