@@ -8,7 +8,7 @@ function EventosNuevos() {
             <div className="flex justify-center space-x-3">
 
             <Link
-                to="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fc.p.c.10.mercadodelaciudad%2F%3Fhl%3Des&is_from_rle"
+                to="https://www.instagram.com/cpc.mercado?igsh=MWc5ZGpuZmdvaDRlZw=="
                 target="_blank"
                 className='flex items-center justify-center p-2 '
             >
@@ -20,7 +20,7 @@ function EventosNuevos() {
                 ></img>
             </Link>
             <Link
-                to="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fc.p.c.10.mercadodelaciudad%2F%3Fhl%3Des&is_from_rle"
+                to="https://www.facebook.com/cpcmercado?mibextid=ZbWKwL"
                 target="_blank"
                 className='flex items-center justify-center p-2 '
             >
