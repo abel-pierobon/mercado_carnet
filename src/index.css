@@ -18,7 +18,7 @@ html, body, #root {
 body {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 
 }
 
@@ -58,15 +58,12 @@ main {
         transform: scale(1.02); /* Escala ligeramente el elemento */
     }
 }
-/* .fondoMain{
-    background-image: url('logoCpc.png');  
-    display: flex;
-    justify-content: center;
-    background-repeat: no-repeat;
-    background-position: center;
-}  */
+.fondoMain{
+    height:"auto";
+} 
 .nav{
     background-color: #59a0e7;
+    height: "10%";
 }
 .active{
     color: aliceblue;

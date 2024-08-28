@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
-        <footer className="flex flex-col bg-gray-300">
-            <div className="flex justify-center h-6 text-[#004381] font-bold font-[Maven Pro]  text-sm">
-                <p>
-                    &copy; copyright 2023 -Realizado por Personal del CPC
+        <footer className="flex flex-col bg-[#59a0e7] h-[5%]">
+            <div className="flex justify-center items-center h-6 text-black font-bold font-[Maven Pro]  text-sm">
+                <p className='mt-4'>
+                    &copy; copyright 2024 -Realizado por Personal del CPC
                     Mercado de la Ciudad
                 </p>
             </div>

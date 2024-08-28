@@ -63,21 +63,21 @@ function Vista() {
             setDataLlamado(aux);
             reproducirSonido();
             if (aux.length > 0) {
-                const { nombre, apellido, puesto } = aux[0];
-                const voz = new SpeechSynthesisUtterance(
-                    `Atencion, ${nombre} ${apellido},dirigirse a , ${puesto}`,
-                );
-                voz.lang = 'es-LA';
-                voz.volume = 1;
-                voz.rate = 1;
-                voz.pitch = 1;
-                setTimeout(() => {
-                    window.speechSynthesis.speak(voz);
-                }, 2000);
+                // const { nombre, apellido, puesto } = aux[0];
+                // const voz = new SpeechSynthesisUtterance(
+                //     `Atencion, ${nombre} ${apellido},dirigirse a , ${puesto}`,
+                // );
+                // voz.lang = 'es-LA';
+                // voz.volume = 1;
+                // voz.rate = 1;
+                // voz.pitch = 1;
+                // setTimeout(() => {
+                //     window.speechSynthesis.speak(voz);
+                // }, 2000);
 
-                setTimeout(() => {
-                    window.speechSynthesis.speak(voz);
-                }, 10000);
+                // setTimeout(() => {
+                //     window.speechSynthesis.speak(voz);
+                // }, 10000);
             }
         });
         return () => {
@@ -97,8 +97,8 @@ function Vista() {
     };
     
     return (
-        <section className="flex justify-center items-start space-x-5 gap-8">
-            <div className=" flex flex-col h-screen w-2/3">
+        <section className="flex justify-center items-start space-x-8">
+            <div className=" flex flex-col  w-2/3  ">
                 {dataLlamado.length === 0 ? (
                     <div className="flex justify-center">
                         <p className="font-bold texto-aparecer-desaparecer">
@@ -117,14 +117,14 @@ function Vista() {
                         );
                     })
                 )}
-                <div className="hidden md:flex justify-center items-center mt-12">
-                    {/* <div className=" w-1/2 h-full">
+                <div className="hidden md:flex justify-center items-center mt-12 space-x-5">
+                    <div className=" w-1/2 ">
                         <Carrusel
                         />
-                    </div> */}
-                    <div className="w-full ">
+                    </div>
+                    <div className="w-1/2 ">
+                        <Requisitos />  
                         {/* <EventosNuevos /> */}
-                        <WebMunicipalidad />
                     </div>
                 </div>
                 <div>
@@ -162,11 +162,10 @@ function Vista() {
                         })
                     )}
                 </div>
-                <div className=" w-full h-full">
-                        <Carrusel
-                        />
-                    </div>
+
             </div>
+                        {/* <WebMunicipalidad /> */}
+
         </section>
     );
 }
