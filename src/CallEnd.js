@@ -6,7 +6,7 @@ function CallEnd({ turno, esUltimo }) {
     return (
         <div
             key={turno.id}
-            className={`grid md:grid-cols-1 border border-black card shadow-md p-4 rounded-md ${clases} ultimoLlamado text-white shadow-md shadow-blue-700 flex`}
+            className={`grid md:grid-cols-1  card shadow-md p-4 ${clases} ultimoLlamado text-white shadow-md shadow-blue-300`}
         >
             <div className="flex flex-col justify-center items-center">
                 <div className="flex justify-center items-center">

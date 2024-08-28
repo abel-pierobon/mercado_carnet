@@ -127,7 +127,7 @@ function Vista() {
                         </div>
                     </div>
                 )}
-                <div className='flex justify-center sm:hidden'>
+                <div className='flex justify-center xs:hidden'>
                     <EventosNuevos />
                 </div>
                 <div>
