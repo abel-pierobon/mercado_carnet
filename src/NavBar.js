@@ -17,7 +17,7 @@ function NavBar() {
     };
 
     return (
-        <div className="flex justify-start font-bold nav">
+        <div className="flex justify-between font-bold nav">
             <NavLink to={"/"}>
                 <Logo />
             </NavLink>

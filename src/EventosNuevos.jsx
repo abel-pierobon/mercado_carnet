@@ -1,42 +1,38 @@
-// import dengue from './img/dengue.jpeg';
-// import masterclasss from './img/masterclass.jpeg';
-// import atencion from './img/atencion.jpeg';
-// import requisitos from './requisitosImagen.png';
-
-import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import instagram from './instagram.png';
+import facebook from '../src/img/facebook.png';
 function EventosNuevos() {
-    // const componentes = [dengue, masterclasss, atencion];
-    // const [indiceActivo, setIndiceActivo] = useState(0);
-
-    // useEffect(() => {
-    //     const intervalo = setInterval(() => {
-    //         setIndiceActivo((prevIndice) =>
-    //             prevIndice === componentes.length - 1 ? 0 : prevIndice + 1
-    //         );
-    //     }, 15000);
-
-    //     return () => clearInterval(intervalo);
-    // }, [componentes.length]);
     return (
-        <div className="flex justify-center">
-            {/* <img
-                    src={componentes[indiceActivo]}
-                    alt="eventos"
-                    className=" border border-black rounded-lg p-1 h-96"
-                /> */}
-            {/* <img
-                    src={requisitos}
-                    alt="eventos"
-                    className=" border border-black rounded-lg p-1 h-full w-full"
-                /> */}
-            <div style={{ width: '100%', height: '100vh' }}>
-                <iframe
-                    src="https://cordoba.gob.ar/novedades/"
-                    style={{ width: '100%', height: '60%', border: 'rounded' }}
-                    title="Página Ejemplo"
-                    
-                />
+        <div className="flex flex-col justify-center mt-16 border border-gray-500 p-4 rounded-lg shadow-lg   ">
+            <h2 className="text-center font-bold">Seguinos en nuestras redes..</h2>
+            <div className="flex justify-center space-x-3">
+
+            <Link
+                to="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fc.p.c.10.mercadodelaciudad%2F%3Fhl%3Des&is_from_rle"
+                target="_blank"
+                className='flex items-center justify-center p-2 '
+            >
+                <img
+                    className="w-10 h-10 ml-2"
+                    src={instagram}
+                    alt="instagram cpc mercado"
+                    title="instagram"
+                ></img>
+            </Link>
+            <Link
+                to="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fc.p.c.10.mercadodelaciudad%2F%3Fhl%3Des&is_from_rle"
+                target="_blank"
+                className='flex items-center justify-center p-2 '
+            >
+                <img
+                    className="w-15 h-15 ml-2"
+                    src={facebook}
+                    alt="facebook cpc mercado"
+                    title="facebook"
+                ></img>
+            </Link>
             </div>
+
         </div>
     );
 }

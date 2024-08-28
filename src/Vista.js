@@ -63,21 +63,21 @@ function Vista() {
             setDataLlamado(aux);
             reproducirSonido();
             if (aux.length > 0) {
-                // const { nombre, apellido, puesto } = aux[0];
-                // const voz = new SpeechSynthesisUtterance(
-                //     `Atencion, ${nombre} ${apellido},dirigirse a , ${puesto}`,
-                // );
-                // voz.lang = 'es-LA';
-                // voz.volume = 1;
-                // voz.rate = 1;
-                // voz.pitch = 1;
-                // setTimeout(() => {
-                //     window.speechSynthesis.speak(voz);
-                // }, 2000);
+                const { nombre, apellido, puesto } = aux[0];
+                const voz = new SpeechSynthesisUtterance(
+                    `Atencion, ${nombre} ${apellido},dirigirse a , ${puesto}`,
+                );
+                voz.lang = 'es-LA';
+                voz.volume = 1;
+                voz.rate = 1;
+                voz.pitch = 1;
+                setTimeout(() => {
+                    window.speechSynthesis.speak(voz);
+                }, 2000);
 
-                // setTimeout(() => {
-                //     window.speechSynthesis.speak(voz);
-                // }, 10000);
+                setTimeout(() => {
+                    window.speechSynthesis.speak(voz);
+                }, 10000);
             }
         });
         return () => {
@@ -95,10 +95,10 @@ function Vista() {
         });
         setData([]);
     };
-    
+
     return (
-        <section className="flex justify-center items-start space-x-8">
-            <div className=" flex flex-col  w-2/3  ">
+        <section className="flex flex-col md:flex-row justify-center items-start space-x-5">
+            <div className=" flex flex-col w-full md:w-2/3">
                 {dataLlamado.length === 0 ? (
                     <div className="flex justify-center">
                         <p className="font-bold texto-aparecer-desaparecer">
@@ -107,7 +107,7 @@ function Vista() {
                     </div>
                 ) : (
                     dataLlamado.map((item2, i) => {
-                        const esUltimo = item2.id === data[0]?.id; 
+                        const esUltimo = item2.id === data[0]?.id;
                         return (
                             <CallEnd
                                 key={i}
@@ -117,15 +117,18 @@ function Vista() {
                         );
                     })
                 )}
-                <div className="hidden md:flex justify-center items-center mt-12 space-x-5">
-                    <div className=" w-1/2 ">
-                        <Carrusel
-                        />
+                {!usuario && (
+                    <div className="hidden xl:flex justify-center  items-center mt-12 space-x-5">
+                        <div className=" w-1/2 ">
+                            <Carrusel />
+                        </div>
+                        <div className="w-1/2 ">
+                            <Requisitos />
+                        </div>
                     </div>
-                    <div className="w-1/2 ">
-                        <Requisitos />  
-                        {/* <EventosNuevos /> */}
-                    </div>
+                )}
+                <div className='flex justify-center sm:hidden'>
+                    <EventosNuevos />
                 </div>
                 <div>
                     {usuario ? (
@@ -148,7 +151,7 @@ function Vista() {
                     )}
                 </div>
             </div>
-            <div className="flex flex-col justify-center">
+            <div className="hidden 2xl:flex flex-col justify-center">
                 <div className=" w-1/1 ">
                     {data.length === 0 ? (
                         <div className="flex justify-center">
@@ -162,10 +165,8 @@ function Vista() {
                         })
                     )}
                 </div>
-
             </div>
-                        {/* <WebMunicipalidad /> */}
-
+            {/* <WebMunicipalidad /> */}
         </section>
     );
 }
