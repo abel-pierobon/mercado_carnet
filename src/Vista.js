@@ -14,9 +14,7 @@ import CallEnd from './CallEnd';
 import { ContextTurnero } from './ContextTurnero';
 import Requisitos from './Requisitos';
 import EventosNuevos from './EventosNuevos';
-import Descargas from './Descargas';
 import Carrusel from './Carrusel';
-import WebMunicipalidad from './WebMunicipalidad';
 
 function Vista() {
     const [data, setData] = useState([]);
@@ -29,7 +27,7 @@ function Vista() {
         const q = query(
             llamadoCollection,
             orderBy('timestamp', 'desc'),
-            limit(8),
+            limit(5),
         );
 
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -151,7 +149,7 @@ function Vista() {
                     )}
                 </div>
             </div>
-            <div className="hidden 2xl:flex flex-col justify-center">
+            <div className="hidden xl:flex flex-col justify-center">
                 <div className=" w-1/1 ">
                     {data.length === 0 ? (
                         <div className="flex justify-center">
@@ -166,7 +164,6 @@ function Vista() {
                     )}
                 </div>
             </div>
-            {/* <WebMunicipalidad /> */}
         </section>
     );
 }

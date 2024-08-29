@@ -30,6 +30,7 @@ function ContextTurneroProvider(props) {
         updateUsuario({ uid: userId, displayName: userDisplayName, email: userEmail });
         }
     }, []);
+
     return (
         <Provider value={{turnoActual, updateTurnoActual, reproducirSonido, updateUsuario,usuario}}>
             {props.children}
