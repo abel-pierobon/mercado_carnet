@@ -42,9 +42,10 @@ function NavBar() {
                         </Link>
                     </>
                     ) : (
-                    <NavLink to={"/login"} className="mx-6 text-xl p-2">
-                        Iniciar Sesión
-                    </NavLink>
+                    // <NavLink to={"/login"} className="mx-6 text-xl p-2">
+                    //     Iniciar Sesión
+                    // </NavLink>
+                    null
                     )}
                 </div>
             </div>
