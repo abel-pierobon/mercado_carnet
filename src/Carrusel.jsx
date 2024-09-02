@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import guia from './qrguia.png';
-import redes from './qrImagen.png';
 import nueva1 from './img/nueva1.png';
 import nueva2 from './img/nueva2.png';
 import nueva3 from './img//nueva3.png';
@@ -14,7 +12,7 @@ const Carrusel = () => {
             setIndiceActivo((prevIndice) =>
                 prevIndice === componentes.length - 1 ? 0 : prevIndice + 1
             );
-        }, 15000); 
+        }, 20000); 
 
         return () => clearInterval(intervalo); 
     }, [componentes.length]);
