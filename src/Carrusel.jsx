@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import guia from './qrguia.png';
 import redes from './qrImagen.png';
+import nueva1 from './img/nueva1.png';
+import nueva2 from './img/nueva2.png';
+import nueva3 from './img//nueva3.png';
 
 const Carrusel = () => {
-    const componentes = [guia, redes];
+    const componentes = [nueva1, nueva2, nueva3];
     const [indiceActivo, setIndiceActivo] = useState(0);
 
     useEffect(() => {

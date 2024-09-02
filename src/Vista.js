@@ -117,12 +117,12 @@ function Vista() {
                 )}
                 {!usuario && (
                     <div className="hidden xl:flex justify-center  items-center mt-12 space-x-5">
-                        <div className=" w-1/2 ">
+                        <div className=" w-3/4 ">
                             <Carrusel />
                         </div>
-                        <div className="w-1/2 ">
+                        {/* <div className="w-1/2 ">
                             <Requisitos />
-                        </div>
+                        </div> */}
                     </div>
                 )}
                 <div className='flex justify-center lg:hidden'>

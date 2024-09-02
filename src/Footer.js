@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
-        <footer className="flex justify-around bg-gray-200 h-[5%] 2xl:h-[10%]  ">
+        <footer className="flex justify-around items-center bg-gray-200 h-[5%] 2xl:h-[10%]  ">
             <div className="flex justify-start ">
                 <img
                     className=" hidden lg:flex justify-center items-center lg:w-12 lg:h-12 2xl:w-20 2xl:h-20  "
@@ -16,7 +16,7 @@ function Footer() {
             
             <div className="flex justify-center items-center h-6 text-black font-bold font-[Maven Pro]  text-xs   2xl:text-base">
                 <p className=' text-center flex justify-center items-center' >
-                    &copy; copyright 2024 -Desarrollado por Personal del CPC
+                    &copy; Copyright 2024 -Desarrollado por Personal del CPC N° 10
                     Mercado de la Ciudad
                 </p>
             </div>
