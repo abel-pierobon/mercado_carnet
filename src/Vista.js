@@ -12,7 +12,6 @@ import { db } from './db/datos';
 import Call from './Call';
 import CallEnd from './CallEnd';
 import { ContextTurnero } from './ContextTurnero';
-import Requisitos from './Requisitos';
 import EventosNuevos from './EventosNuevos';
 import Carrusel from './Carrusel';
 
@@ -62,20 +61,20 @@ function Vista() {
             reproducirSonido();
             if (aux.length > 0) {
                 const { nombre, apellido, puesto } = aux[0];
-                const voz = new SpeechSynthesisUtterance(
-                    `Atencion, ${nombre} ${apellido},dirigirse a , ${puesto}`,
-                );
-                voz.lang = 'es-LA';
-                voz.volume = 1;
-                voz.rate = 1;
-                voz.pitch = 1;
-                setTimeout(() => {
-                    window.speechSynthesis.speak(voz);
-                }, 2000);
+                // const voz = new SpeechSynthesisUtterance(
+                //     `Atencion, ${nombre} ${apellido},dirigirse a , ${puesto}`,
+                // );
+                // voz.lang = 'es-LA';
+                // voz.volume = 1;
+                // voz.rate = 1;
+                // voz.pitch = 1;
+                // setTimeout(() => {
+                //     window.speechSynthesis.speak(voz);
+                // }, 2000);
 
-                setTimeout(() => {
-                    window.speechSynthesis.speak(voz);
-                }, 10000);
+                // setTimeout(() => {
+                //     window.speechSynthesis.speak(voz);
+                // }, 10000);
             }
         });
         return () => {
@@ -116,7 +115,7 @@ function Vista() {
                     })
                 )}
                 {!usuario && (
-                    <div className="hidden xl:flex justify-center  items-center mt-12 space-x-5">
+                    <div className="hidden xl:flex justify-center  items-center mt-6 space-x-5">
                         <div className=" w-3/4 ">
                             <Carrusel />
                         </div>

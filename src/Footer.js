@@ -1,6 +1,4 @@
 import React from 'react';
-import instagram from './instagram.png';
-import { Link } from 'react-router-dom';
 
 function Footer() {
     return (

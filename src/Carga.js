@@ -29,6 +29,7 @@ function Carga() {
                 tramite: persona.tramite,
                 horaTurno: persona.horaTurno,
             },
+            consultorioMedico: false,
             fecha: serverTimestamp(),
         };
         toast.success('Turno cargado correctamente');

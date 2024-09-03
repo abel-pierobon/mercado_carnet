@@ -17,11 +17,11 @@ function NavBar() {
     };
 
     return (
-        <div className="flex justify-between font-bold nav">
+        <div className="flex justify-between font-bold shadow-md shadow-gray-700 rounded-b-3xl rounded-t-sm mx-1 nav">
             <NavLink to={"/"}>
                 <Logo />
             </NavLink>
-            <div className={`flex content-center mt-3 burger`} onClick={handleToggleMenu}>
+            <div className={`flex items-center burger`} onClick={handleToggleMenu}>
                 <button className="menu">
                     <img src={menu} alt="menu hamburguesa" className="w-16 flex justify-end" />
                 </button>
