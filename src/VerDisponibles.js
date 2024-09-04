@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import {
     collection,
     addDoc,
@@ -9,12 +9,13 @@ import {
 } from 'firebase/firestore';
 import { db } from './db/datos';
 import ModalEliminar from './ModalEliminar';
-import { toast } from "sonner";
-
+import { ContextTurnero } from './ContextTurnero';
 
 function VerDisponibles({ turnos, puestoDeAtencion }) {
-    const [selectedPuesto, setSelectedPuesto] = useState('');
     const [modalEliminar, setModalEliminar] = useState(false);
+    const [clickedTurnoId, setClickedTurnoId] = useState(null); // Estado para almacenar el turno clickeado
+    const { clickButton } = useContext(ContextTurnero);
+    const [mensaje, setMensaje] = useState('');
 
     const llamar = () => {
         const llamadoCollection = collection(db, 'llamados');
@@ -32,7 +33,14 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
             .catch((error) => {
                 console.error(error);
             });
+
+        setClickedTurnoId(turnos.id); // Guardar el ID del turno clickeado
+        setMensaje('Llamado realizado con éxito');
+        setTimeout(() => {
+            setMensaje('');
+        }, 12000);
     };
+
     const handleModalizar = () => {
         setModalEliminar(true);
     };
@@ -40,15 +48,19 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
     const handleCloseModalizar = () => {
         setModalEliminar(false);
     };
+
     const handleElegirPuesto = () => {
-        toast.success('Elige puesto de atención');
-    }
+        setMensaje('Elige primero una sección');
+        setTimeout(() => {
+            setMensaje('');
+        }, 3000);
+    };
+
     const eliminarTurno = async () => {
         try {
             const turnoDocRef = doc(db, 'turnos', turnos.id);
             await deleteDoc(turnoDocRef);
             setModalEliminar(false);
-            // window.location.reload();
         } catch (error) {
             console.error('Error al eliminar el turno:', error);
         }
@@ -58,15 +70,16 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
         try {
             const turnoDocRef = doc(db, 'turnos', turnos.id);
             await updateDoc(turnoDocRef, { consultorioMedico: true });
-            console.log('Turno actualizado correctamente.');
+            setClickedTurnoId(turnos.id); // Guardar el ID del turno clickeado
+            setMensaje('Atención marcada con éxito');
+            setTimeout(() => {
+                setMensaje('');
+            }, 12000);
         } catch (error) {
             console.error('Error al actualizar el turno:', error);
         }
     };
 
-    const handlePuestoChange = (event) => {
-        setSelectedPuesto(event.target.value);
-    };
     return (
         <section>
             <div
@@ -92,31 +105,31 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                     </p>
                     <p className="font-semibold">{turnos.datos.tramite}</p>
                 </div>
-                {/* <select onChange={handlePuestoChange}>
-                    <option value="select">Elige lugar</option>
-                    <option value="Ventanilla 1">Ventanilla 1</option>
-                    <option value="Ventanilla 2">Ventanilla 2</option>
-                    <option value="Emisión de Licencias">Emisión Licencias</option>
-                    <option value="Consultorio Médico">Consultorio Médico</option>
-                </select> */}
-                {puestoDeAtencion !== 'select' ? (
-                    <button
-                    className="rounded-md border border-radius border-black bg-green-500 p-1 mt-2"
-                    onClick={llamar}
-                >
-                    Llamar a {puestoDeAtencion}
-                </button>
+                {mensaje === '' ? (
+                    puestoDeAtencion !== 'select' ? (
+                        <button
+                            className="rounded-md border border-radius border-black bg-green-500 p-1 mt-2 hover:bg-green-600"
+                            onClick={llamar}
+                        >
+                            Llamar a {puestoDeAtencion}
+                        </button>
+                    ) : (
+                        <button
+                            className="rounded-md border border-radius border-black bg-green-500 hover:bg-green-600 p-1 mt-2"
+                            onClick={handleElegirPuesto}
+                        >
+                            Selecciona un puesto de atención para llamar
+                        </button>
+                    )
                 ) : (
-                    <button
-                        className="rounded-md border border-radius border-black bg-green-500 p-1 mt-2"
-                        onClick={handleElegirPuesto}
-                    >
-                        Selecciona un puesto de atención para llamar
-                    </button>
+                    <p className="font-semibold flex justify-center text-center text-black border border-black bg-sky-600 rounded-md p-1 mt-2 llamadoTurno">
+                        {mensaje}
+                    </p>
                 )}
+
                 {puestoDeAtencion !== 'Consultorio Medico' ? (
                     <button
-                        className="rounded-md border border-radius border-red-500 bg-red-500 text-white p-1 mt-2"
+                        className="rounded-md border border-radius border-black bg-red-500 text-white p-1 mt-2 hover:bg-red-600"
                         onClick={handleModalizar}
                     >
                         Trámite finalizado
@@ -127,7 +140,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                     </p>
                 ) : (
                     <button
-                        className="rounded-md border border-radius border-red-500 bg-red-500 text-white p-1 mt-2"
+                        className="rounded-md border border-radius border-black bg-red-500 text-white p-1 mt-2 hover:bg-red-600"
                         onClick={changeConsultorioMedico}
                     >
                         Marcar atención

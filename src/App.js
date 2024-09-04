@@ -15,8 +15,8 @@ function App() {
                     <Toaster
                         position="top-center"
                         expand={false}
-                        autoClose={200}
-                        duration={1500}
+                        autoClose={2000}
+                        duration={4000}
                         closeOnClick={true}
                         richColors
                     />

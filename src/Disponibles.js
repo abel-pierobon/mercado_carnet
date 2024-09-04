@@ -72,14 +72,14 @@ function Disponibles() {
                     <h3 className="text-center font-bold text-xl">
                         {' '}
                         Estás ubicado {' '}
-                        <span className=" text-2xl font-bold text-black p-1 border border-black rounded-lg bg-green-500">
+                        <span className=" text-2xl font-bold text-black capitalize">
                             {puestoDeAtencion}
                         </span>
                     </h3>
                 )}
                 <select
                     onChange={(e) => setPuestoDeAtencion(e.target.value)}
-                    className="  border border-black rounded-md max-w-xs"
+                    className="  border border-black rounded-md max-w-xs bg-green-400"
                 >
                     <option value="select">Elige sección</option>
                     <option value="Ventanilla 1">Ventanilla 1</option>

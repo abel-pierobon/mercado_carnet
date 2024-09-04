@@ -18,8 +18,7 @@ import Carrusel from './Carrusel';
 function Vista() {
     const [data, setData] = useState([]);
     const [dataLlamado, setDataLlamado] = useState([]);
-    const { reproducirSonido } = useContext(ContextTurnero);
-    const { usuario } = useContext(ContextTurnero);
+    const {usuario, reproducirSonido } = useContext(ContextTurnero);
 
     useEffect(() => {
         const llamadoCollection = collection(db, 'llamados');
@@ -119,9 +118,6 @@ function Vista() {
                         <div className=" w-3/4 ">
                             <Carrusel />
                         </div>
-                        {/* <div className="w-1/2 ">
-                            <Requisitos />
-                        </div> */}
                     </div>
                 )}
                 <div className='flex justify-center lg:hidden'>

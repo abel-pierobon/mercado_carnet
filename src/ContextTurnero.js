@@ -43,6 +43,8 @@ function ContextTurneroProvider(props) {
             updateUsuario({ uid: userId, displayName: userDisplayName, email: userEmail });
         }
     }, []);
+    const [clickButton, setClickButton] = useState('');
+
 
     return (
         <Provider value={{
@@ -52,7 +54,9 @@ function ContextTurneroProvider(props) {
             updateUsuario,
             usuario,
             puestoDeAtencion,
-            setPuestoDeAtencion
+            setPuestoDeAtencion,
+            clickButton,
+            setClickButton
         }}>
             {props.children}
         </Provider>

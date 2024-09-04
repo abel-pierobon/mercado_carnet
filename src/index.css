@@ -46,13 +46,23 @@ main {
     border: 2px solid rgb(10, 10, 10);
     animation: resaltar 1s infinite alternate; 
 }
-
+.llamadoTurno{
+    animation: resaltarTurno 0.8s infinite alternate;
+}
 @keyframes resaltar {
     0% {
         transform: scale(1);
     }
     100% {
         transform: scale(1.02); /* Escala ligeramente el elemento */
+    }
+}
+@keyframes resaltarTurno {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05); /* Escala ligeramente el elemento */
     }
 }
 .fondoMain{
