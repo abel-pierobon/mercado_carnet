@@ -9,6 +9,8 @@ import {
 } from 'firebase/firestore';
 import { db } from './db/datos';
 import ModalEliminar from './ModalEliminar';
+import { toast } from "sonner";
+
 
 function VerDisponibles({ turnos, puestoDeAtencion }) {
     const [selectedPuesto, setSelectedPuesto] = useState('');
@@ -38,10 +40,14 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
     const handleCloseModalizar = () => {
         setModalEliminar(false);
     };
+    const handleElegirPuesto = () => {
+        toast.success('Elige puesto de atención');
+    }
     const eliminarTurno = async () => {
         try {
             const turnoDocRef = doc(db, 'turnos', turnos.id);
             await deleteDoc(turnoDocRef);
+            setModalEliminar(false);
             // window.location.reload();
         } catch (error) {
             console.error('Error al eliminar el turno:', error);
@@ -61,7 +67,6 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
     const handlePuestoChange = (event) => {
         setSelectedPuesto(event.target.value);
     };
-    console.log(puestoDeAtencion);
     return (
         <section>
             <div
@@ -94,16 +99,17 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                     <option value="Emisión de Licencias">Emisión Licencias</option>
                     <option value="Consultorio Médico">Consultorio Médico</option>
                 </select> */}
-                {!puestoDeAtencion === 'select' ? (
+                {puestoDeAtencion !== 'select' ? (
                     <button
                     className="rounded-md border border-radius border-black bg-green-500 p-1 mt-2"
                     onClick={llamar}
                 >
-                    Llamar a ${puestoDeAtencion}
+                    Llamar a {puestoDeAtencion}
                 </button>
                 ) : (
                     <button
                         className="rounded-md border border-radius border-black bg-green-500 p-1 mt-2"
+                        onClick={handleElegirPuesto}
                     >
                         Selecciona un puesto de atención para llamar
                     </button>

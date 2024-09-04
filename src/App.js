@@ -13,7 +13,7 @@ function App() {
             <ContextTurneroProvider>
                     <NavBar />
                     <Toaster
-                        position="bottom-right"
+                        position="top-center"
                         expand={false}
                         autoClose={200}
                         duration={1500}

@@ -63,7 +63,7 @@ function Disponibles() {
 
     return (
         <div className="grid grid-cols-1">
-            <div className="flex justify-center space-x-8 mb-3">
+            <div className="flex justify-center space-x-8 mb-3 mt-1">
                 {puestoDeAtencion === 'select' ? (
                     <h3 className="text-center font-bold text-lg">
                         Elige sección
@@ -71,8 +71,8 @@ function Disponibles() {
                 ) : (
                     <h3 className="text-center font-bold text-xl">
                         {' '}
-                        Estas en la sección{' '}
-                        <span className=" text-2xl font-bold text-green-500">
+                        Estás ubicado {' '}
+                        <span className=" text-2xl font-bold text-black p-1 border border-black rounded-lg bg-green-500">
                             {puestoDeAtencion}
                         </span>
                     </h3>
@@ -115,11 +115,14 @@ function Disponibles() {
                     ))
                 )}
             </section>
-            <section className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2">
+            {puestoDeAtencion !== 'Consultorio Medico' && (
+                <section className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2">
                 {data.length > 0 && (
                     <EliminarTurnos eliminar={handleModalTodos} />
                 )}
             </section>
+            )}
+            
             {modalTodos && <ModalTodosLosTurnos eliminarTodosLosTurnos={eliminarTodosLosTurnos} handleCloseModalTodos={handleCloseModalTodos}/>}
             
         </div>
