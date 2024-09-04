@@ -14,11 +14,13 @@ import CallEnd from './CallEnd';
 import { ContextTurnero } from './ContextTurnero';
 import EventosNuevos from './EventosNuevos';
 import Carrusel from './Carrusel';
+import ModalTodosLosTurnos from './ModalTodosLosTurnos';
 
 function Vista() {
     const [data, setData] = useState([]);
     const [dataLlamado, setDataLlamado] = useState([]);
     const {usuario, reproducirSonido } = useContext(ContextTurnero);
+    const [modalTodos, setModalTodos] = useState(false);
 
     useEffect(() => {
         const llamadoCollection = collection(db, 'llamados');
@@ -59,7 +61,7 @@ function Vista() {
             setDataLlamado(aux);
             reproducirSonido();
             if (aux.length > 0) {
-                const { nombre, apellido, puesto } = aux[0];
+                // const { nombre, apellido, puesto } = aux[0];
                 // const voz = new SpeechSynthesisUtterance(
                 //     `Atencion, ${nombre} ${apellido},dirigirse a , ${puesto}`,
                 // );
@@ -90,7 +92,9 @@ function Vista() {
             await deleteDoc(doc.ref);
         });
         setData([]);
+        setModalTodos(false);
     };
+    
 
     return (
         <section className="flex flex-col md:flex-row justify-center items-start space-x-5">
@@ -132,7 +136,7 @@ function Vista() {
                                 </div>
                             ) : (
                                 <button
-                                    onClick={eliminarTodosLosLlamados}
+                                    onClick={() => setModalTodos(true)}
                                     className="rounded-md border border-radius border-black-500 bg-red-500 text-white p-1 mt-2"
                                 >
                                     Limpiar Turnero
@@ -159,6 +163,9 @@ function Vista() {
                     )}
                 </div>
             </div>
+            {modalTodos &&
+            <ModalTodosLosTurnos eliminarTodosLosLlamados={eliminarTodosLosLlamados} setModalTodos={setModalTodos} />
+        }
         </section>
     );
 }

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import {  useState } from 'react';
 import {
     collection,
     addDoc,
@@ -9,12 +9,9 @@ import {
 } from 'firebase/firestore';
 import { db } from './db/datos';
 import ModalEliminar from './ModalEliminar';
-import { ContextTurnero } from './ContextTurnero';
 
 function VerDisponibles({ turnos, puestoDeAtencion }) {
     const [modalEliminar, setModalEliminar] = useState(false);
-    const [clickedTurnoId, setClickedTurnoId] = useState(null); // Estado para almacenar el turno clickeado
-    const { clickButton } = useContext(ContextTurnero);
     const [mensaje, setMensaje] = useState('');
 
     const llamar = () => {
@@ -34,7 +31,6 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                 console.error(error);
             });
 
-        setClickedTurnoId(turnos.id); // Guardar el ID del turno clickeado
         setMensaje('Llamado realizado con éxito');
         setTimeout(() => {
             setMensaje('');
