@@ -39,7 +39,7 @@ function Carga() {
                 setPersona({
                     nombre: '',
                     apellido: '',
-                    tramite: 'otros',
+                    tramite: 'Renovación',
                     horaTurno: '',
                 });
             })
