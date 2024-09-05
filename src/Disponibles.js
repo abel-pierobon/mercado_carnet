@@ -55,16 +55,16 @@ function Disponibles() {
 
     return (
         <div className="grid grid-cols-1">
-            <div className="flex justify-center space-x-8 mb-3 mt-1">
+            <div className="  flex justify-center space-x-8 mb-3 mt-1">
                 {puestoDeAtencion === 'select' ? (
                     <h3 className="text-center font-bold text-lg">
                         Elige sección
                     </h3>
                 ) : (
-                    <h3 className="text-center font-bold text-xl">
+                    <h3 className="hidden md:flex items-center  text-center font-bold text-xl">
                         {' '}
                         Estás ubicado{' '}
-                        <span className=" text-2xl font-bold text-black capitalize py-1 px-2 bg-green-300 rounded-md shadow-xl border border-b-gray-900 border-r-gray-500">
+                        <span className=" text-2xl font-bold text-black capitalize mx-2 py-1 px-2 bg-green-300 rounded-md shadow-xl border border-b-gray-900 border-r-gray-500">
                             {puestoDeAtencion}
                         </span>
                     </h3>
