@@ -97,11 +97,12 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                 }`}
             >   
             {puestoDeAtencion !== 'Consultorio Medico' ? (
-                <button className="p-1 flex justify-end">
+                <button className="px-1 flex justify-end ">
                 <img
                     src={editar}
                     alt="Editar"
                     onClick={() => setModalEditar(true)}
+                    className=' border border-black rounded-md p-1 hover:bg-gray-300'
                 />
             </button>
             ): null}
