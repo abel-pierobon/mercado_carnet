@@ -10,7 +10,6 @@ import {
 import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import VerDisponibles from './VerDisponibles';
-import EliminarTurnos from './EliminarTurnos';
 import { ContextTurnero } from './ContextTurnero';
 import ModalTodosLosTurnos from './ModalTodosLosTurnos';
 function Disponibles() {
@@ -19,14 +18,8 @@ function Disponibles() {
     const { id } = useParams();
     const { puestoDeAtencion, setPuestoDeAtencion } =
         useContext(ContextTurnero);
-        const [modalTodos, setModalTodos] = useState(false);
-        const handleModalTodos = () => {
-            setModalTodos(true);
-        }
+    const [modalTodos, setModalTodos] = useState(false);
 
-        const handleCloseModalTodos = () => {
-            setModalTodos(false);
-        }
     useEffect(() => {
         const turnosCollection = collection(db, 'turnos');
         const q = query(turnosCollection, orderBy('datos.horaTurno', 'asc'));
@@ -58,7 +51,6 @@ function Disponibles() {
         });
         setData([]);
         setModalTodos(false);
-        
     };
 
     return (
@@ -71,7 +63,7 @@ function Disponibles() {
                 ) : (
                     <h3 className="text-center font-bold text-xl">
                         {' '}
-                        Estás ubicado {' '}
+                        Estás ubicado{' '}
                         <span className=" text-2xl font-bold text-black capitalize py-1 px-2 bg-green-300 rounded-md shadow-xl border border-b-gray-900 border-r-gray-500">
                             {puestoDeAtencion}
                         </span>
@@ -101,7 +93,7 @@ function Disponibles() {
             <section className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2">
                 {data.length === 0 ? (
                     <div className="flex justify-center">
-                        <p className="font-bold texto-aparecer-desaparecer">
+                        <p className="font-bold texto-aparecer-desaparecer text-center">
                             No hay turnos disponibles
                         </p>
                     </div>
@@ -117,14 +109,25 @@ function Disponibles() {
             </section>
             {puestoDeAtencion !== 'Consultorio Medico' && (
                 <section className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-2">
-                {data.length > 0 && (
-                    <EliminarTurnos eliminar={handleModalTodos} />
-                )}
-            </section>
+                    {data.length > 0 && (
+                        <div className="">
+                            <button
+                                onClick={() => setModalTodos(true)}
+                                className="rounded-md border border-radius border-red-500 bg-red-500 text-white p-1 mt-2"
+                            >
+                                Limpiar Turnos
+                            </button>
+                        </div>
+                    )}
+                </section>
             )}
-            
-            {modalTodos && <ModalTodosLosTurnos eliminarTodosLosTurnos={eliminarTodosLosTurnos} handleCloseModalTodos={handleCloseModalTodos}/>}
-            
+
+            {modalTodos && (
+                <ModalTodosLosTurnos
+                    eliminarTodosLosTurnos={eliminarTodosLosTurnos}
+                    setModalTodos={setModalTodos}
+                />
+            )}
         </div>
     );
 }

@@ -1,4 +1,4 @@
-import {  useState } from 'react';
+import React, { useState } from 'react';
 import {
     collection,
     addDoc,
@@ -9,10 +9,13 @@ import {
 } from 'firebase/firestore';
 import { db } from './db/datos';
 import ModalEliminar from './ModalEliminar';
+import ModalEditarTurno from './ModalEditarTurno';
+import editar from './img/editar.png';
 
 function VerDisponibles({ turnos, puestoDeAtencion }) {
     const [modalEliminar, setModalEliminar] = useState(false);
     const [mensaje, setMensaje] = useState('');
+    const [modalEditar, setModalEditar] = useState(false);
 
     const llamar = () => {
         const llamadoCollection = collection(db, 'llamados');
@@ -66,11 +69,17 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
         try {
             const turnoDocRef = doc(db, 'turnos', turnos.id);
             await updateDoc(turnoDocRef, { consultorioMedico: true });
-            setClickedTurnoId(turnos.id); // Guardar el ID del turno clickeado
-            setMensaje('Atención marcada con éxito');
-            setTimeout(() => {
-                setMensaje('');
-            }, 12000);
+            
+        } catch (error) {
+            console.error('Error al actualizar el turno:', error);
+        }
+    };
+
+    const editarTurno = async (nuevosDatos) => {
+        try {
+            const turnoDocRef = doc(db, 'turnos', turnos.id);
+            await updateDoc(turnoDocRef, { datos: nuevosDatos });
+            setModalEditar(false);
         } catch (error) {
             console.error('Error al actualizar el turno:', error);
         }
@@ -86,7 +95,17 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                         ? 'bg-gray-500'
                         : ''
                 }`}
-            >
+            >   
+            {puestoDeAtencion !== 'Consultorio Medico' ? (
+                <button className="p-1 flex justify-end">
+                <img
+                    src={editar}
+                    alt="Editar"
+                    onClick={() => setModalEditar(true)}
+                />
+            </button>
+            ): null}
+                
                 <div className="flex justify-center">
                     <h2 className="text-start font-black uppercase m-3 text-lg">
                         {turnos.datos.apellido}
@@ -114,39 +133,45 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                             className="rounded-md border border-radius border-black bg-green-500 hover:bg-green-600 p-1 mt-2"
                             onClick={handleElegirPuesto}
                         >
-                            Selecciona un puesto de atención para llamar
+                            Elige una sección
                         </button>
                     )
                 ) : (
-                    <p className="font-semibold flex justify-center text-center text-black border border-black bg-sky-600 rounded-md p-1 mt-2 llamadoTurno">
+                    <p className="text-black text-center font-black p-2 llamadoTurno">
                         {mensaje}
                     </p>
                 )}
-
-                {puestoDeAtencion !== 'Consultorio Medico' ? (
-                    <button
-                        className="rounded-md border border-radius border-black bg-red-500 text-white p-1 mt-2 hover:bg-red-600"
-                        onClick={handleModalizar}
-                    >
-                        Trámite finalizado
-                    </button>
-                ) : turnos.consultorioMedico ? (
-                    <p className="text-center font-bold mt-2 ">
-                        Turno atendido
-                    </p>
-                ) : (
-                    <button
-                        className="rounded-md border border-radius border-black bg-red-500 text-white p-1 mt-2 hover:bg-red-600"
+                {puestoDeAtencion === 'Consultorio Medico' ? (
+                    turnos.consultorioMedico === false  ? (
+                        <button
+                        className="rounded-md border border-radius border-black bg-purple-500 text-white p-2 mt-2 hover:bg-purple-700"
                         onClick={changeConsultorioMedico}
                     >
-                        Marcar atención
+                        Marcar como atendido
+                    </button>
+                    ): (
+                        <p className="text-black text-center font-black p-2 llamadoTurno"> Turno atendido</p>
+                    )
+                    
+                ) : (
+                    <button
+                        className="rounded-md border border-radius border-black bg-red-500 text-white p-2 mt-2 hover:bg-red-700"
+                        onClick={handleModalizar}
+                    >
+                        Finalizar atención
                     </button>
                 )}
                 {modalEliminar && (
                     <ModalEliminar
-                        handleModalizar={handleModalizar}
-                        handleCloseModalizar={handleCloseModalizar}
                         eliminarTurno={eliminarTurno}
+                        setModalEliminar={setModalEliminar}
+                    />
+                )}
+                {modalEditar && (
+                    <ModalEditarTurno
+                        setModalEditar={setModalEditar}
+                        turnos={turnos}
+                        editarTurno={editarTurno}
                     />
                 )}
             </div>

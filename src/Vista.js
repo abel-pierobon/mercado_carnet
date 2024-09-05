@@ -14,7 +14,7 @@ import CallEnd from './CallEnd';
 import { ContextTurnero } from './ContextTurnero';
 import EventosNuevos from './EventosNuevos';
 import Carrusel from './Carrusel';
-import ModalTodosLosTurnos from './ModalTodosLosTurnos';
+import ModalLLamados from './ModalLLamados';
 
 function Vista() {
     const [data, setData] = useState([]);
@@ -158,13 +158,13 @@ function Vista() {
                         <p></p>
                     ) : (
                         data.map((item, i) => {
-                            return <Call key={i} turno={item} />;
+                            return i> 0 && <Call key={i} turno={item} />;
                         })
                     )}
                 </div>
             </div>
             {modalTodos &&
-            <ModalTodosLosTurnos eliminarTodosLosLlamados={eliminarTodosLosLlamados} setModalTodos={setModalTodos} />
+            <ModalLLamados eliminarTodosLosLlamados={eliminarTodosLosLlamados} setModalTodos={setModalTodos} />
         }
         </section>
     );

@@ -1,4 +1,4 @@
-function ModalEliminar({ handleCloseModalizar, eliminarTurno }) {
+function ModalEliminar({ setModalEliminar, eliminarTurno }) {
     return (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-50">
             <div className="bg-white rounded-lg p-6">
@@ -9,7 +9,7 @@ function ModalEliminar({ handleCloseModalizar, eliminarTurno }) {
                         Si finalizar
                     </button>
                     <button className="rounded-md border border-radius border-black bg-green-700 text-white p-2 mt-2 hover:bg-green-800"
-                    onClick={handleCloseModalizar}
+                    onClick={() => setModalEliminar(false)}
                     >
                         Cancelar
                     </button>
