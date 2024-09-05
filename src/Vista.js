@@ -43,7 +43,7 @@ function Vista() {
             unsubscribe();
         };
     }, []);
-
+console.log(data)
     useEffect(() => {
         const llamadoCollection = collection(db, 'llamados');
         const qu = query(

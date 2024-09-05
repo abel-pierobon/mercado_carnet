@@ -22,7 +22,7 @@ function Disponibles() {
 
     useEffect(() => {
         const turnosCollection = collection(db, 'turnos');
-        const q = query(turnosCollection, orderBy('datos.horaTurno', 'asc'));
+        const q = query(turnosCollection, orderBy('fecha', 'asc'));
 
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             const aux = querySnapshot.docs.map((doc) => {
