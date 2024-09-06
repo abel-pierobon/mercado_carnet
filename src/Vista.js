@@ -15,7 +15,7 @@ import { ContextTurnero } from './ContextTurnero';
 import EventosNuevos from './EventosNuevos';
 import Carrusel from './Carrusel';
 import ModalLLamados from './ModalLLamados';
-
+import Clima from './Clima';
 function Vista() {
     const [data, setData] = useState([]);
     const [dataLlamado, setDataLlamado] = useState([]);
@@ -27,7 +27,7 @@ function Vista() {
         const q = query(
             llamadoCollection,
             orderBy('timestamp', 'desc'),
-            limit(7),
+            limit(6),
         );
 
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -162,6 +162,7 @@ console.log(data)
                         })
                     )}
                 </div>
+                <Clima />
             </div>
             {modalTodos &&
             <ModalLLamados eliminarTodosLosLlamados={eliminarTodosLosLlamados} setModalTodos={setModalTodos} />

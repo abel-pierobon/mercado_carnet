@@ -10,11 +10,11 @@ function CallEnd({ turno, esUltimo }) {
         >
             <div className="flex flex-col justify-center items-center">
                 <div className="flex justify-center items-center">
-                    <h2 className="text-center font-black uppercase m-3  text-sm md:text-2xl lg:text-7xl">
+                    <h2 className="text-center font-black uppercase m-3  text-sm md:text-2xl lg:text-7xl text-shadow">
                         {turno.apellido} <span className='ml-2'>{turno.nombre}</span>
                     </h2>
                 </div>
-                <h2 className="text-center mdtext-start font-black uppercase m-3  text-sm md:text-2xl lg:text-6xl">
+                <h2 className="text-center mdtext-start font-black uppercase m-3  text-sm md:text-2xl lg:text-6xl text-shadow">
                     {turno.puesto}
                 </h2>
             </div>
