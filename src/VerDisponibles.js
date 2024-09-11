@@ -128,7 +128,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                     puestoDeAtencion !== 'select' ? (
                         <button
                             className="rounded-md border border-radius border-black bg-green-500 p-1 mt-2 hover:bg-green-600"
-                            onClick={() => {llamar(), handleActivarModalTrivia()}}
+                            onClick={llamar}
                         >
                             Llamar a {puestoDeAtencion}
                         </button>
