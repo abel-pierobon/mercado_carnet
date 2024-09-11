@@ -16,10 +16,11 @@ import EventosNuevos from './EventosNuevos';
 import Carrusel from './Carrusel';
 import ModalLLamados from './ModalLLamados';
 import Clima from './Clima';
+import ModalTrivia from './ModalTrivia';
 function Vista() {
     const [data, setData] = useState([]);
     const [dataLlamado, setDataLlamado] = useState([]);
-    const {usuario, reproducirSonido } = useContext(ContextTurnero);
+    const {usuario, reproducirSonido,modalTrivia } = useContext(ContextTurnero);
     const [modalTodos, setModalTodos] = useState(false);
 
     useEffect(() => {
@@ -43,7 +44,6 @@ function Vista() {
             unsubscribe();
         };
     }, []);
-console.log(data)
     useEffect(() => {
         const llamadoCollection = collection(db, 'llamados');
         const qu = query(
@@ -95,10 +95,11 @@ console.log(data)
         setModalTodos(false);
     };
     
-
+    console.log(modalTrivia)
     return (
         <section className="flex flex-col md:flex-row justify-center items-start space-x-5">
-            <div className=" flex flex-col w-full md:w-2/3">
+            
+            <div className=" flex flex-col w-full md:w-2/4">
                 {dataLlamado.length === 0 ? (
                     <div className="flex justify-center">
                         <p className="font-bold texto-aparecer-desaparecer">

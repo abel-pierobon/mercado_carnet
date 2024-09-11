@@ -50,6 +50,12 @@ main {
 .llamadoTurno {
     animation: resaltarTurno 0.8s infinite alternate;
 }
+.trivia{
+    border-image: linear-gradient(to right, #97192f, #f4c000) 1;
+}
+.correcta {
+    animation: resaltar 1s infinite alternate;
+}
 @keyframes resaltar {
     0% {
         transform: scale(1);

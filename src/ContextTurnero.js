@@ -12,6 +12,7 @@ function ContextTurneroProvider(props) {
 
     const [turnoActual, setTurnoActual] = useState('');
     const [usuario, setUsuario] = useState('');
+    const [modalTrivia, setModalTrivia] = useState(false);
 
     useEffect(() => {
         // Guarda el valor de puestoDeAtencion en localStorage cada vez que cambie
@@ -56,7 +57,9 @@ function ContextTurneroProvider(props) {
             puestoDeAtencion,
             setPuestoDeAtencion,
             clickButton,
-            setClickButton
+            setClickButton,
+            modalTrivia,
+            setModalTrivia
         }}>
             {props.children}
         </Provider>

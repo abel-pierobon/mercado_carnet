@@ -1,0 +1,169 @@
+{
+    "preguntas": [
+        {
+            "pregunta": "La luz amarilla intermitente del semáforo indica:",
+            "true": "Disminuir la marcha y circular con máxima precaución.",
+            "false_1": "Prioridad de paso.",
+            "false_2": "Prohibido pasar."
+        },
+        {
+            "pregunta": "¿Quién tiene prioridad de paso en una rotonda?",
+            "true": "El que está circulando por la misma.",
+            "false_1": "El que intenta ingresar (entrar) a la misma."
+        },
+        {
+            "pregunta": "La banda de detención que es la línea transversal ancha marcada sobre la calzada indica:",
+            "true": "La obligación de detener el vehículo antes de esta línea.",
+            "false_1": "El cruce peatonal.",
+            "false_2": "Indica separación de carriles."
+        },
+        {
+            "pregunta": "¿En curvas o pendientes qué indica la demarcación horizontal doble línea amarilla o blanca continua?",
+            "true": "Que no se puede adelantar.",
+            "false_1": "Que puede adelantarse.",
+            "false_2": "Que hay un obstáculo en el camino."
+        },
+        {
+            "pregunta": "Está atravesando un cruce de avenidas sin semáforos a 30 Km/h. Ud. está:",
+            "true": "Conduciendo de acuerdo con el reglamento.",
+            "false_1": "Conduciendo demasiado despacio.",
+            "false_2": "Sobrepasando el límite de velocidad."
+        },
+        {
+            "pregunta": "En esta intersección Ud. conduce el auto rojo. ¿Debe:",
+            "true": "Detenerse obligatoriamente y ceder el paso a todos los vehículos (autos amarillo y verde).",
+            "false_1": "Detenerse solo para cederle el paso al auto amarillo."
+        },
+        {
+            "pregunta": "¿En intersecciones semaforizadas debe avanzar con luz verde a su frente si del otro lado de la intersección hay un embotellamiento de tránsito?",
+            "true": "No.",
+            "false_1": "Es indiferente.",
+            "false_2": "Sí."
+        },
+        {
+            "pregunta": "¿Quién tiene prioridad en una senda peatonal no regulada por agente de tránsito ni por semáforo?",
+            "true": "Los peatones en forma absoluta.",
+            "false_1": "Los vehículos ya que la senda peatonal obliga a los peatones a cruzar por ella pero cuando el tránsito vehicular lo permita."
+        },
+        {
+            "pregunta": "¿Ante esta señal cuál es la conducta a seguir?",
+            "true": "Detener el vehículo en forma total.",
+            "false_1": "Disminuir la marcha para observar el tránsito.",
+            "false_2": "Continuar la marcha."
+        },
+        {
+            "pregunta": "¿Cuál es la velocidad máxima de circulación en avenidas de la Ciudad de Córdoba?",
+            "true": "60 Km/h.",
+            "false_1": "40 Km/h.",
+            "false_2": "80 Km/h."
+        },
+        {
+            "pregunta": "¿Los vehículos que giran en una esquina regulada por semáforos deben detener la marcha para ceder el paso a los peatones que están por cruzar la calzada?",
+            "true": "Sí, siempre que el peatón cruce con luz verde a su frente.",
+            "false_1": "No, los vehículos tienen siempre prioridad."
+        },
+        {
+            "pregunta": "¿Qué debe hacer un conductor antes de llegar a una intersección si desea girar a la izquierda o a la derecha?",
+            "true": "Advertir la maniobra con la luz de giro correspondiente conduciendo el vehículo hacia el carril por el que pretende girar con una antelación de 30 m.",
+            "false_1": "Advertir la maniobra con la luz de giro correspondiente conduciendo el vehículo hacia el carril por el que pretende girar con una antelación de 20 m.",
+            "false_2": "Advertir la maniobra con la luz de giro correspondiente conduciendo el vehículo hacia el carril por el que pretende girar con una antelación de 10 m."
+        },
+        {
+            "pregunta": "¿Qué debe hacer Ud. si llegando a un cruce en el que el semáforo se encuentra en luz roja un inspector de tránsito le indica que continúe la marcha?",
+            "true": "Obedecer la indicación del inspector.",
+            "false_1": "Indicarle al inspector que la luz está roja.",
+            "false_2": "Esperar que el semáforo indique la luz verde y entonces continuar."
+        },
+        {
+            "pregunta": "¿Después de realizar un adelantamiento tiene Ud. conductor la obligación de advertir con el guiño correspondiente la maniobra de retorno hacia el carril derecho?",
+            "true": "Sí, siempre que se modifique la trayectoria de un vehículo es obligación colocar el guiño.",
+            "false_1": "Solo en horario nocturno.",
+            "false_2": "No es obligatorio el uso del guiño para indicar esta maniobra."
+        },
+        {
+            "pregunta": "Todo vehículo que se aproxima a un cruce NO semaforizado debe ceder el paso a los peatones que inician el cruce de calzada. ¿Esto es obligatorio?",
+            "true": "Siempre.",
+            "false_1": "Nunca.",
+            "false_2": "Según las circunstancias."
+        },
+        {
+            "pregunta": "Para advertir la inconveniencia del sobrepaso al vehículo que se nos quiera adelantar se pondrá:",
+            "true": "Luz de giro izquierda.",
+            "false_1": "Luz de giro derecha.",
+            "false_2": "Luz de baliza."
+        },
+        {
+            "pregunta": "¿Se puede circular con un vehículo sobre las líneas pintadas en el pavimento que separan carriles?",
+            "true": "No.",
+            "false_1": "Sí."
+        },
+        {
+            "pregunta": "¿Qué línea pintada en el pavimento me permite cambiar de carril?",
+            "true": "La línea discontinua (de trazos).",
+            "false_1": "La línea continua.",
+            "false_2": "La línea doble continua."
+        },
+        {
+            "pregunta": "¿La luz roja intermitente del semáforo qué significa?",
+            "true": "Una señal de 'PARE'.",
+            "false_1": "Una señal de 'CEDA EL PASO'.",
+            "false_2": "Indica disminuir la velocidad."
+        },
+        {
+            "pregunta": "¿Al circular por la vía pública conduciendo un automotor debo portar la licencia de conducir en vigencia?",
+            "true": "Sí.",
+            "false_1": "No."
+        },
+        {
+            "pregunta": "¿Por qué lugar y en qué sentido deberá caminar el peatón en las zonas donde no hay vereda?",
+            "true": "Fuera de la calzada en el sentido contrario a la circulación vehicular.",
+            "false_1": "Sobre la calzada en el mismo sentido de la circulación vehicular.",
+            "false_2": "Fuera de la calzada en el mismo sentido de la circulación vehicular."
+        },
+        {
+            "pregunta": "El triángulo que está pintado en la calzada indica:",
+            "true": "La obligación de ceder el paso.",
+            "false_1": "El sentido de circulación de los vehículos.",
+            "false_2": "Que circula por una avenida."
+        },
+        {
+            "pregunta": "¿En una intersección no regulada por señales ni semáforos ni agente de tránsito qué vehículo tiene prioridad de paso?",
+            "true": "El rojo.",
+            "false_1": "El amarillo.",
+            "false_2": "Es indistinto."
+        },
+        {
+            "pregunta": "Al llegar a una intersección sin señalizar como conductor debo:",
+            "true": "Ceder el paso a los vehículos que se presenten por la derecha.",
+            "false_1": "Ceder el paso solo a los vehículos que circulen por la vía más importante y principal.",
+            "false_2": "Ceder el paso solo a los vehículos que circulen a mayor velocidad que el mío."
+        },
+        {
+            "pregunta": "¿En qué caso de los que se cita está permitido adelantarse?",
+            "true": "En las rotondas.",
+            "false_1": "En todas las intersecciones.",
+            "false_2": "En los pasos para peatones y sus proximidades si la velocidad no es superior a 40 Km/h."
+        },
+        {
+            "pregunta": "¿Qué línea pintada en el pavimento me prohíbe cambiar de carril?",
+            "true": "Las continuas.",
+            "false_1": "Las discontinuas (de trazos)."
+        },
+        {
+            "pregunta": "¿Está permitido el adelantamiento por la derecha?",
+            "true": "Sí, en calzadas de dos o más carriles con el mismo sentido siempre que los que transiten por el carril izquierdo se encuentren momentáneamente detenidos.",
+            "false_1": "Sí, siempre que al adelantamiento lo efectúe por la banquina.",
+            "false_2": "Nunca."
+        },
+        {
+            "pregunta": "Ud. circula por un carril que se encuentra pintado sobre el pavimento con una flecha que indica solo posibilidad de girar a la derecha. Ud.:",
+            "true": "Debe girar obligatoriamente a la derecha.",
+            "false_1": "Puede continuar la marcha sin girar."
+        },
+        {
+            "pregunta": "¿En una intersección semaforizada con luz roja a su frente ante la indicación del agente de tránsito de avanzar qué debe hacer?",
+            "true": "Obedecer al agente de tránsito ya que sus órdenes prevalecen sobre las normas.",
+            "false_1": "Detenerme ya que el semáforo está en rojo."
+        }
+    ]
+}

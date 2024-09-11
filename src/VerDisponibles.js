@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
     collection,
     addDoc,
@@ -11,12 +11,12 @@ import { db } from './db/datos';
 import ModalEliminar from './ModalEliminar';
 import ModalEditarTurno from './ModalEditarTurno';
 import editar from './img/editar.png';
-
+import { ContextTurnero } from './ContextTurnero';
 function VerDisponibles({ turnos, puestoDeAtencion }) {
     const [modalEliminar, setModalEliminar] = useState(false);
     const [mensaje, setMensaje] = useState('');
     const [modalEditar, setModalEditar] = useState(false);
-
+    const { setModalTrivia } = useContext(ContextTurnero);
     const llamar = () => {
         const llamadoCollection = collection(db, 'llamados');
         const llamado = {
@@ -33,13 +33,17 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
             .catch((error) => {
                 console.error(error);
             });
-
         setMensaje('Llamado realizado con éxito');
         setTimeout(() => {
             setMensaje('');
         }, 12000);
     };
-
+    const handleActivarModalTrivia = () => {
+        setModalTrivia(false);
+        setTimeout(() => {
+            setModalTrivia(true);
+        }, 5000);
+    }
     const handleModalizar = () => {
         setModalEliminar(true);
     };
@@ -69,7 +73,6 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
         try {
             const turnoDocRef = doc(db, 'turnos', turnos.id);
             await updateDoc(turnoDocRef, { consultorioMedico: true });
-            
         } catch (error) {
             console.error('Error al actualizar el turno:', error);
         }
@@ -92,21 +95,21 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                 className={`grid md:grid-cols-1 border border-black shadow-xl p-4 rounded-md bg-gray-200 ${
                     turnos.consultorioMedico === true &&
                     puestoDeAtencion === 'Consultorio Medico'
-                        ? 'bg-gray-500'
+                        ? 'hidden'
                         : ''
                 }`}
-            >   
-            {puestoDeAtencion !== 'Consultorio Medico' ? (
-                <button className="px-1 flex justify-end ">
-                <img
-                    src={editar}
-                    alt="Editar"
-                    onClick={() => setModalEditar(true)}
-                    className=' border border-black rounded-md p-1 hover:bg-gray-300'
-                />
-            </button>
-            ): null}
-                
+            >
+                {puestoDeAtencion !== 'Consultorio Medico' ? (
+                    <button className="px-1 flex justify-end ">
+                        <img
+                            src={editar}
+                            alt="Editar"
+                            onClick={() => setModalEditar(true)}
+                            className=" border border-black rounded-md p-1 hover:bg-gray-300"
+                        />
+                    </button>
+                ) : null}
+
                 <div className="flex justify-center">
                     <h2 className="text-start font-black uppercase m-3 text-lg">
                         {turnos.datos.apellido}
@@ -125,7 +128,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                     puestoDeAtencion !== 'select' ? (
                         <button
                             className="rounded-md border border-radius border-black bg-green-500 p-1 mt-2 hover:bg-green-600"
-                            onClick={llamar}
+                            onClick={() => {llamar(), handleActivarModalTrivia()}}
                         >
                             Llamar a {puestoDeAtencion}
                         </button>
@@ -143,17 +146,19 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                     </p>
                 )}
                 {puestoDeAtencion === 'Consultorio Medico' ? (
-                    turnos.consultorioMedico === false  ? (
+                    turnos.consultorioMedico === false ? (
                         <button
-                        className="rounded-md border border-radius border-black bg-purple-500 text-white p-2 mt-2 hover:bg-purple-700"
-                        onClick={changeConsultorioMedico}
-                    >
-                        Marcar como atendido
-                    </button>
-                    ): (
-                        <p className="text-black text-center font-black p-2 llamadoTurno"> Turno atendido</p>
+                            className="rounded-md border border-radius border-black bg-purple-500 text-white p-2 mt-2 hover:bg-purple-700"
+                            onClick={changeConsultorioMedico}
+                        >
+                            Marcar como atendido
+                        </button>
+                    ) : (
+                        <p className="text-black text-center font-black p-2 llamadoTurno">
+                            {' '}
+                            Turno atendido
+                        </p>
                     )
-                    
                 ) : (
                     <button
                         className="rounded-md border border-radius border-black bg-red-500 text-white p-2 mt-2 hover:bg-red-700"

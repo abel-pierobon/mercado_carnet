@@ -31,7 +31,7 @@ function NavBar() {
                     </NavLink>
                     {usuario ? (
                     <>
-                        <NavLink to={"/carga"} className="mx-6 text-xl p-2 ">
+                        <NavLink to={"/carga"} className="mx-6 text-xl p-2  ">
                         Cargar turno
                         </NavLink>
                         <NavLink to={"/disponibles"} className="mx-6 text-xl p-2 ">

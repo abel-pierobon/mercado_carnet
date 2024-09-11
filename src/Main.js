@@ -20,7 +20,7 @@ function Main() {
     };
 
     return (
-        <main className="p-2 grow mx-10 fondoMain">
+        <main className="p-2 grow mx-10 fondoMain ">
             <Routes>
                 <Route path="/" element={<Vista />} />
                 <Route
