@@ -52,7 +52,7 @@ function Clima() {
                     <div className="grid grid-cols-4 gap-5">
                         <div className="flex flex-col justify-center items-center p-2 ">
                             <img
-                                src={`http://openweathermap.org/img/wn/${climaData.weather[0].icon}.png`}
+                                src={`https://openweathermap.org/img/wn/${climaData.weather[0].icon}.png`}
                                 alt={climaData.weather[0].description}
                                 className="w-20 h-20"
                             />
