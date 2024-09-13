@@ -16,7 +16,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
     const [modalEliminar, setModalEliminar] = useState(false);
     const [mensaje, setMensaje] = useState('');
     const [modalEditar, setModalEditar] = useState(false);
-    const { setModalTrivia } = useContext(ContextTurnero);
+    const { setModalTrivia, modalTrivia } = useContext(ContextTurnero);
     const llamar = () => {
         const llamadoCollection = collection(db, 'llamados');
         const llamado = {
@@ -38,12 +38,12 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
             setMensaje('');
         }, 12000);
     };
-    const handleActivarModalTrivia = () => {
-        setModalTrivia(false);
-        setTimeout(() => {
-            setModalTrivia(true);
-        }, 5000);
-    }
+    // const handleActivarModalTrivia = () => {
+    //     setTimeout(() => {
+    //         setModalTrivia(true);
+    //     }, 5000);
+    //     console.log(modalTrivia);
+    // }
     const handleModalizar = () => {
         setModalEliminar(true);
     };
@@ -109,7 +109,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                         />
                     </button>
                 ) : null}
-
+                {/* <button onClick={handleActivarModalTrivia} className="px-1 flex justify-end "> activar modal trivia</button> */}
                 <div className="flex justify-center">
                     <h2 className="text-start font-black uppercase m-3 text-lg">
                         {turnos.datos.apellido}
@@ -166,6 +166,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                     >
                         Finalizar atención
                     </button>
+                    
                 )}
                 {modalEliminar && (
                     <ModalEliminar

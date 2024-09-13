@@ -55,7 +55,7 @@ function ModalTrivia() {
                             {alternativas().map((respuesta, index) => (
                                 <p
                                     key={index}
-                                    className={`text-center text-4xl text-gray-900 font-semibold px-4 py-2 w-2/3 mx-auto ${
+                                    className={`text-center text-5xl text-white  font-semibold px-4 py-2 w-2/3 mx-auto  ${
                                         respuesta === respuestaCorrecta
                                             ? "bg-green-500 mx-auto rounded-lg shadow-lg correcta"
                                             : null

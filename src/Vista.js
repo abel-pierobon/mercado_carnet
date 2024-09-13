@@ -162,11 +162,15 @@ function Vista() {
                         })
                     )}
                 </div>
-                <Clima />
+                {/* <Clima /> */}
             </div>
             {modalTodos &&
             <ModalLLamados eliminarTodosLosLlamados={eliminarTodosLosLlamados} setModalTodos={setModalTodos} />
         }
+        {/* {modalTrivia &&(
+        
+        !usuario && <ModalTrivia />)} */}
+        
         </section>
     );
 }
