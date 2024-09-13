@@ -20,7 +20,8 @@ import ModalTrivia from './ModalTrivia';
 function Vista() {
     const [data, setData] = useState([]);
     const [dataLlamado, setDataLlamado] = useState([]);
-    const {usuario, reproducirSonido,modalTrivia } = useContext(ContextTurnero);
+    const { usuario, reproducirSonido, modalTrivia } =
+        useContext(ContextTurnero);
     const [modalTodos, setModalTodos] = useState(false);
 
     useEffect(() => {
@@ -28,7 +29,7 @@ function Vista() {
         const q = query(
             llamadoCollection,
             orderBy('timestamp', 'desc'),
-            limit(6),
+            limit(5),
         );
 
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -72,7 +73,6 @@ function Vista() {
                 // setTimeout(() => {
                 //     window.speechSynthesis.speak(voz);
                 // }, 2000);
-
                 // setTimeout(() => {
                 //     window.speechSynthesis.speak(voz);
                 // }, 10000);
@@ -94,11 +94,10 @@ function Vista() {
         setData([]);
         setModalTodos(false);
     };
-    
+
     return (
-        <section className="flex flex-col md:flex-row justify-center items-start space-x-5">
-            
-            <div className=" flex flex-col w-full md:w-2/4">
+        <section className="flex flex-col justify-center items-start space-x-5">
+            <div className=" flex flex-col w-full ">
                 {dataLlamado.length === 0 ? (
                     <div className="flex justify-center">
                         <p className="font-bold texto-aparecer-desaparecer">
@@ -117,15 +116,32 @@ function Vista() {
                         );
                     })
                 )}
+            </div>
+            <div className=" flex w-full  ">
                 {!usuario && (
-                    <div className="hidden xl:flex justify-center  items-center mt-6 space-x-5">
+                    <div className="hidden xl:flex justify-center w-1/2 items-center mt-6 space-x-5">
                         <div className=" w-3/4 ">
                             <Carrusel />
                         </div>
                     </div>
                 )}
-                <div className='flex justify-center lg:hidden'>
+                <div className="flex justify-center lg:hidden">
                     <EventosNuevos />
+                </div>
+                <div className="hidden xl:flex flex-col justify-center">
+                    <div className=" w-1/1 ">
+                        {data.length === 0 ? (
+                            <div className="flex justify-center">
+                                <p className="font-bold texto-aparecer-desaparecer"></p>
+                            </div>
+                        ) : data.length === 1 ? (
+                            <p></p>
+                        ) : (
+                            data.map((item, i) => {
+                                return i > 0 && <Call key={i} turno={item} />;
+                            })
+                        )}
+                    </div>
                 </div>
                 <div>
                     {usuario ? (
@@ -148,29 +164,15 @@ function Vista() {
                     )}
                 </div>
             </div>
-            <div className="hidden xl:flex flex-col justify-center">
-                <div className=" w-1/1 ">
-                    {data.length === 0 ? (
-                        <div className="flex justify-center">
-                            <p className="font-bold texto-aparecer-desaparecer"></p>
-                        </div>
-                    ) : data.length === 1 ? (
-                        <p></p>
-                    ) : (
-                        data.map((item, i) => {
-                            return i> 0 && <Call key={i} turno={item} />;
-                        })
-                    )}
-                </div>
-                {/* <Clima /> */}
-            </div>
-            {modalTodos &&
-            <ModalLLamados eliminarTodosLosLlamados={eliminarTodosLosLlamados} setModalTodos={setModalTodos} />
-        }
-        {/* {modalTrivia &&(
+            {modalTodos && (
+                <ModalLLamados
+                    eliminarTodosLosLlamados={eliminarTodosLosLlamados}
+                    setModalTodos={setModalTodos}
+                />
+            )}
+            {/* {modalTrivia &&(
         
         !usuario && <ModalTrivia />)} */}
-        
         </section>
     );
 }
