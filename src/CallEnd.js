@@ -14,7 +14,7 @@ function CallEnd({ turno, esUltimo }) {
                         {turno.apellido} <span className='ml-2'>{turno.nombre}</span>
                     </h2>
                 </div>
-                <h2 className="text-center mdtext-start font-black uppercase m-3  text-sm md:text-2xl 2xl:text-8xl text-shadow">
+                <h2 className="text-center mdtext-start font-black uppercase m-3  text-sm md:text-2xl lg:text-8xl text-shadow">
                     {turno.puesto}
                 </h2>
             </div>

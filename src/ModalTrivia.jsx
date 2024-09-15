@@ -45,7 +45,7 @@ function ModalTrivia() {
     };
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-95 ">
+        <div className="fixed inset-x-2 inset-y-0 flex items-center justify-center z-50 bg-gray-900 bg-opacity-95 rounded-lg border border-red-500">
             <div className=" bg-gradient-to-t from-[#59a0e7] to-[#004b81] rounded-lg p-6 mx-48 shadow-lg shadow-[#97192f]">
                 {/* <h3 className="text-center font-semibold text-7xl uppercase text-white text-shadow">Trivia Guia del buen conductor</h3> */}
                 {data.length > 0 && (
@@ -55,10 +55,10 @@ function ModalTrivia() {
                             {alternativas().map((respuesta, index) => (
                                 <p
                                     key={index}
-                                    className={`text-center text-5xl text-white  font-semibold px-4 py-2 w-2/3 mx-auto  ${
+                                    className={`text-center text-5xl text-white  font-semibold px-4 py-2 w-2/3 mx-auto ${
                                         respuesta === respuestaCorrecta
                                             ? "bg-green-500 mx-auto rounded-lg shadow-lg correcta"
-                                            : null
+                                            : "bg-red-400 mx-auto rounded-lg shadow-lg"
                                     }`}
                                 >
                                     {respuesta}

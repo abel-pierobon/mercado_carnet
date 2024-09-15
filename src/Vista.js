@@ -128,6 +128,7 @@ function Vista() {
                 <div className="flex justify-center lg:hidden">
                     <EventosNuevos />
                 </div>
+                <section className=''>
                 <div className="hidden xl:flex flex-col justify-center">
                     <div className=" w-1/1 ">
                         {data.length === 0 ? (
@@ -163,6 +164,8 @@ function Vista() {
                         <p></p>
                     )}
                 </div>
+                </section>
+                
             </div>
             {modalTodos && (
                 <ModalLLamados
@@ -170,9 +173,7 @@ function Vista() {
                     setModalTodos={setModalTodos}
                 />
             )}
-            {/* {modalTrivia &&(
-        
-        !usuario && <ModalTrivia />)} */}
+            {/* <ModalTrivia /> */}
         </section>
     );
 }
