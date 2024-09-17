@@ -117,7 +117,7 @@ function Vista() {
                     })
                 )}
             </div>
-            <div className=" flex w-full  ">
+            <div className=" flex w-full justify-between  ">
                 {!usuario && (
                     <div className="hidden xl:flex justify-center w-1/2 items-center mt-6 space-x-5">
                         <div className=" w-3/4 ">
@@ -128,44 +128,45 @@ function Vista() {
                 <div className="flex justify-center lg:hidden">
                     <EventosNuevos />
                 </div>
-                <section className=''>
-                <div className="hidden xl:flex flex-col justify-center">
-                    <div className=" w-1/1 ">
-                        {data.length === 0 ? (
-                            <div className="flex justify-center">
-                                <p className="font-bold texto-aparecer-desaparecer"></p>
-                            </div>
-                        ) : data.length === 1 ? (
-                            <p></p>
-                        ) : (
-                            data.map((item, i) => {
-                                return i > 0 && <Call key={i} turno={item} />;
-                            })
-                        )}
-                    </div>
-                </div>
-                <div>
-                    {usuario ? (
-                        <div className="">
+                <section className=" mt-5">
+                    <div className="hidden xl:flex flex-col justify-center">
+                        <div className=" w-1/1 ">
                             {data.length === 0 ? (
                                 <div className="flex justify-center">
-                                    <p></p>
+                                    <p className="font-bold texto-aparecer-desaparecer"></p>
                                 </div>
+                            ) : data.length === 1 ? (
+                                <p></p>
                             ) : (
-                                <button
-                                    onClick={() => setModalTodos(true)}
-                                    className="rounded-md border border-radius border-black-500 bg-red-500 text-white p-1 mt-2"
-                                >
-                                    Limpiar Turnero
-                                </button>
+                                data.map((item, i) => {
+                                    return (
+                                        i > 0 && <Call key={i} turno={item} />
+                                    );
+                                })
                             )}
                         </div>
-                    ) : (
-                        <p></p>
-                    )}
-                </div>
+                    </div>
+                    <div>
+                        {usuario ? (
+                            <div className="">
+                                {data.length === 0 ? (
+                                    <div className="flex justify-center">
+                                        <p></p>
+                                    </div>
+                                ) : (
+                                    <button
+                                        onClick={() => setModalTodos(true)}
+                                        className="rounded-md border border-radius border-black-500 bg-red-500 text-white p-1 mt-2"
+                                    >
+                                        Limpiar Turnero
+                                    </button>
+                                )}
+                            </div>
+                        ) : (
+                            <p></p>
+                        )}
+                    </div>
                 </section>
-                
             </div>
             {modalTodos && (
                 <ModalLLamados
