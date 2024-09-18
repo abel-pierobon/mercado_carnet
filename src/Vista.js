@@ -119,7 +119,7 @@ function Vista() {
             </div>
             <div className=" flex w-full justify-between  ">
                 {!usuario && (
-                    <div className="hidden xl:flex justify-center w-1/2 items-center mt-6 space-x-5">
+                    <div className="hidden xl:flex justify-center w-2/3 items-center mt-6 space-x-5">
                         <div className=" w-3/4 ">
                             <Carrusel />
                         </div>
