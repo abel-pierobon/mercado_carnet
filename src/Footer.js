@@ -12,7 +12,7 @@ function Footer() {
                 ></img>
             </div>
             
-            <div className="flex justify-center items-center h-6 text-black font-bold font-[Maven Pro]  text-xs   2xl:text-base">
+            <div className="flex justify-center items-center h-6 text-black font-bold font-[Maven Pro]  text-xs   2xl:text-xl">
                 <p className=' text-center flex justify-center items-center' >
                     &copy; Copyright 2024 -Desarrollado por Personal del CPC N° 10
                     Mercado de la Ciudad
@@ -21,7 +21,7 @@ function Footer() {
             <div className="hidden lg:flex justify-start  ">
                 <img
                     src="https://cordoba.gob.ar/wp-content/uploads/2020/08/logo-celeste-txt.svg"
-                    className="w-28 h-28"
+                    className="w-28 h-28 xl:w-52 xl:h-40"
                     alt=""
                     decoding="async"
                 ></img>

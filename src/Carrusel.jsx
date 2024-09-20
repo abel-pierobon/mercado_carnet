@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import nueva1 from './img/nueva1.png';
-import nueva2 from './img/nueva2.png';
-import nueva3 from './img//nueva3.png';
+import nueva1 from './img/1.png';
+import nueva2 from './img/2.png';
+import nueva3 from './img//4.png';
 import horario from './img/septiembre.png';
 import noche from './img/noche.png';
 

@@ -29,7 +29,7 @@ function Vista() {
         const q = query(
             llamadoCollection,
             orderBy('timestamp', 'desc'),
-            limit(5),
+            limit(6),
         );
 
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -117,10 +117,11 @@ function Vista() {
                     })
                 )}
             </div>
-            <div className=" flex w-full justify-between  ">
+            <div className=" flex justify-center items-start space-x-6 ">
                 {!usuario && (
-                    <div className="hidden xl:flex justify-center w-2/3 items-center mt-6 space-x-5">
-                        <div className=" w-3/4 ">
+                    // cambiar w-1/2
+                    <div className="hidden xl:flex justify-start w-1/2 items-center mt-6 ">
+                        <div className=" w-4/4 ">
                             <Carrusel />
                         </div>
                     </div>
@@ -128,7 +129,7 @@ function Vista() {
                 <div className="flex justify-center lg:hidden">
                     <EventosNuevos />
                 </div>
-                <section className=" mt-5">
+                <section className=" mt-5 w-1/2">
                     <div className="hidden xl:flex flex-col justify-center">
                         <div className=" w-1/1 ">
                             {data.length === 0 ? (

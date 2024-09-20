@@ -20,14 +20,14 @@ function Call({ turno }) {
     return (
         <div
             key={turno.id}
-            className="border border-gray-800 border-x-2 border-y-2 card shadow-md py-2 px-2 rounded-md llamados"
+            className="border border-gray-800 border-x-2 border-y-2 card shadow-xl py-2 px-2 rounded-md llamados "
         >
-            <div className="flex justify-between py-2  px-2">
-                <h2 className="text-start   font-black uppercase m-1 text-base md:text-lg xl:text-4xl  ">
+            <div className="flex justify-between py-2 px-2 space-y-2">
+                <h2 className="text-start font-black uppercase m-1 text-base md:text-lg xl:text-5xl  ">
                     {turno.apellido} {turno.nombre}
                 </h2>
                 <div className="flex justify-center items-start">
-                    <h2 className="text-end  font-black uppercase m-1  text-base md:text-lg xl:text-4xl">
+                    <h2 className="text-end  font-black uppercase m-1  text-base md:text-lg xl:text-5xl">
                         {turno.puesto}
                     </h2>
                     {usuario && (
