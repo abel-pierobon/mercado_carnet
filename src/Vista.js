@@ -175,7 +175,7 @@ function Vista() {
                     setModalTodos={setModalTodos}
                 />
             )}
-            {/* <ModalTrivia /> */}
+            { <ModalTrivia /> }
         </section>
     );
 }
