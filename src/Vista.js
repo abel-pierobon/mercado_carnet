@@ -29,7 +29,7 @@ function Vista() {
         const q = query(
             llamadoCollection,
             orderBy('timestamp', 'desc'),
-            limit(6),
+            limit(5),
         );
 
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
