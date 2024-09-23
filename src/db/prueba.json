@@ -147,6 +147,30 @@
             "pregunta": "¿En una intersección semaforizada con luz roja a su frente ante la indicación del agente de tránsito de avanzar qué debe hacer?",
             "true": "Obedecer al agente de tránsito ya que sus órdenes prevalecen sobre las normas.",
             "false_1": "Detenerme ya que el semáforo está en rojo."
-        }
+        },
+                {
+                    "pregunta": "¿En qué caso puede Ud. circular habiéndosele vencido el I.T.V. de su vehículo?",
+                    "true": "En ninguno.",
+                    "false_1": "Dentro de los 15 días posteriores al vencimiento."
+                },
+                {
+                    "pregunta": "La luz del semáforo está roja pero la flecha de giro derecho está en verde. Esto le indica:",
+                    "true": "Que debo girar obligatoriamente a la derecha si estoy colocado en ese carril.",
+                    "false_1": "Que debo detenerme cualquiera sea la dirección que vaya a seguir.",
+                    "false_2": "Que está prohibido girar a la derecha."
+                },
+                {
+                    "pregunta": "¿Deberá Ud. circular por la banquina para que otro conductor pueda adelantarle?",
+                    "true": "No, como norma general está prohibida la circulación por la banquina excepto en situación de emergencia.",
+                    "false_1": "Sí, porque así tendrá más espacio y el adelantamiento se realizará con mayor seguridad.",
+                    "false_2": "Sí, pero solamente en vías de un solo carril para cada sentido."
+                },
+                {
+                    "pregunta": "En una calzada sin señalización, ¿puede estacionar en:",
+                    "true": "El costado derecho atento al sentido de circulación y a no menos de 5 m de la senda peatonal demarcada o imaginaria.",
+                    "false_1": "El costado izquierdo atento al sentido de circulación y a no menos de 5 m de la senda peatonal demarcada o imaginaria.",
+                    "false_2": "Es indistinto, puedo hacerlo donde exista espacio."
+                }
+
     ]
 }

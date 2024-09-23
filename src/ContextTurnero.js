@@ -64,10 +64,9 @@ function ContextTurneroProvider(props) {
         };
     }, []);
 
-    console.log(modalTriviaActive);
 
     function activarModal() {
-        const modalDocRef = doc(db, 'modal', 'UNJNSw1fnY8A6lA3Fvxz'); // Reemplaza por el ID de tu documento si es necesario
+        const modalDocRef = doc(db, 'modal', 'UNJNSw1fnY8A6lA3Fvxz'); 
     
         updateDoc(modalDocRef, {
             isActive: true
@@ -80,7 +79,7 @@ function ContextTurneroProvider(props) {
         });
     }
     function desactivarModal() {
-        const modalDocRef = doc(db, 'modal', 'UNJNSw1fnY8A6lA3Fvxz'); // Reemplaza por el ID de tu documento si es necesario
+        const modalDocRef = doc(db, 'modal', 'UNJNSw1fnY8A6lA3Fvxz'); 
     
         updateDoc(modalDocRef, {
             isActive: false

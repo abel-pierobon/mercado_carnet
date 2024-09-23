@@ -36,6 +36,10 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
             setTimeout(() => {
                 activarModal();
             }, 1800000);
+            setTimeout(() => {
+                desactivarModal();
+            }, 900000);
+            
         setMensaje('Llamado realizado con éxito');
         setTimeout(() => {
             setMensaje('');
