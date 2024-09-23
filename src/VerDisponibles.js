@@ -16,8 +16,9 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
     const [modalEliminar, setModalEliminar] = useState(false);
     const [mensaje, setMensaje] = useState('');
     const [modalEditar, setModalEditar] = useState(false);
-    const { setModalTrivia, modalTrivia } = useContext(ContextTurnero);
+    const { activarModal, desactivarModal } = useContext(ContextTurnero);
     const llamar = () => {
+        desactivarModal();
         const llamadoCollection = collection(db, 'llamados');
         const llamado = {
             nombre: turnos.datos.nombre,
@@ -25,7 +26,6 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
             puesto: puestoDeAtencion,
             timestamp: serverTimestamp(),
         };
-
         addDoc(llamadoCollection, llamado)
             .then((resultado) => {
                 console.log(resultado);
@@ -33,17 +33,15 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
             .catch((error) => {
                 console.error(error);
             });
+            setTimeout(() => {
+                activarModal();
+            }, 1800000);
         setMensaje('Llamado realizado con éxito');
         setTimeout(() => {
             setMensaje('');
         }, 12000);
     };
-    // const handleActivarModalTrivia = () => {
-    //     setTimeout(() => {
-    //         setModalTrivia(true);
-    //     }, 5000);
-    //     console.log(modalTrivia);
-    // }
+    
     const handleModalizar = () => {
         setModalEliminar(true);
     };
@@ -109,7 +107,6 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                         />
                     </button>
                 ) : null}
-                {/* <button onClick={handleActivarModalTrivia} className="px-1 flex justify-end "> activar modal trivia</button> */}
                 <div className="flex justify-center">
                     <h2 className="text-start font-black uppercase m-3 text-lg">
                         {turnos.datos.apellido}
@@ -166,7 +163,6 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                     >
                         Finalizar atención
                     </button>
-                    
                 )}
                 {modalEliminar && (
                     <ModalEliminar
@@ -181,6 +177,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                         editarTurno={editarTurno}
                     />
                 )}
+                
             </div>
         </section>
     );

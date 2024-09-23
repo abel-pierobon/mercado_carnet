@@ -1,21 +1,22 @@
 import React, { createContext, useEffect, useState } from 'react';
 import Timbre from './Timbre.mp3';
+import { collection, query, onSnapshot } from 'firebase/firestore';
+import { db } from './db/datos';
+import { doc, updateDoc } from 'firebase/firestore';
 
 const ContextTurnero = createContext();
 const { Provider } = ContextTurnero;
 
 function ContextTurneroProvider(props) {
     const [puestoDeAtencion, setPuestoDeAtencion] = useState(() => {
-        // Intenta obtener el valor guardado en localStorage al inicializar el estado
         return localStorage.getItem('puestoDeAtencion') || 'Carnet';
     });
 
     const [turnoActual, setTurnoActual] = useState('');
     const [usuario, setUsuario] = useState('');
-    const [modalTrivia, setModalTrivia] = useState('');
+    const [modalTriviaActive, setModalTriviaActive] = useState(false); // Cambiado a booleano porque isActive es un valor booleano
 
     useEffect(() => {
-        // Guarda el valor de puestoDeAtencion en localStorage cada vez que cambie
         localStorage.setItem('puestoDeAtencion', puestoDeAtencion);
     }, [puestoDeAtencion]);
 
@@ -34,19 +35,64 @@ function ContextTurneroProvider(props) {
     };
 
     useEffect(() => {
-        // Verifica la existencia de la información del usuario en el localStorage al cargar la aplicación
         const userId = localStorage.getItem('userId');
         const userDisplayName = localStorage.getItem('userDisplayName');
         const userEmail = localStorage.getItem('userEmail');
 
         if (userId && userDisplayName && userEmail) {
-            // Si hay información del usuario, actualiza el estado del usuario en el contexto
             updateUsuario({ uid: userId, displayName: userDisplayName, email: userEmail });
         }
     }, []);
+
     const [clickButton, setClickButton] = useState('');
 
+    useEffect(() => {
+        const modalCollection = collection(db, 'modal');
+        const q = query(modalCollection);
+        
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                if (data.isActive !== undefined) {
+                    setModalTriviaActive(data.isActive); // Acceder a 'isActive' correctamente
+                }
+            });
+        });
 
+        return () => {
+            unsubscribe();
+        };
+    }, []);
+
+    console.log(modalTriviaActive);
+
+    function activarModal() {
+        const modalDocRef = doc(db, 'modal', 'UNJNSw1fnY8A6lA3Fvxz'); // Reemplaza por el ID de tu documento si es necesario
+    
+        updateDoc(modalDocRef, {
+            isActive: true
+        })
+        .then(() => {
+            console.log('Modal activado');
+        })
+        .catch((error) => {
+            console.error('Error al activar el modal: ', error);
+        });
+    }
+    function desactivarModal() {
+        const modalDocRef = doc(db, 'modal', 'UNJNSw1fnY8A6lA3Fvxz'); // Reemplaza por el ID de tu documento si es necesario
+    
+        updateDoc(modalDocRef, {
+            isActive: false
+        })
+        .then(() => {
+            console.log('Modal desactivado');
+        })
+        .catch((error) => {
+            console.error('Error al desactivar el modal: ', error);
+        });
+    }
+    
     return (
         <Provider value={{
             turnoActual,
@@ -58,8 +104,9 @@ function ContextTurneroProvider(props) {
             setPuestoDeAtencion,
             clickButton,
             setClickButton,
-            modalTrivia,
-            setModalTrivia
+            modalTriviaActive, // Este ahora contiene el valor de isActive
+            activarModal,
+            desactivarModal 
         }}>
             {props.children}
         </Provider>

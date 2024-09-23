@@ -15,13 +15,17 @@ import { ContextTurnero } from './ContextTurnero';
 import EventosNuevos from './EventosNuevos';
 import Carrusel from './Carrusel';
 import ModalLLamados from './ModalLLamados';
-import Clima from './Clima';
 import ModalTrivia from './ModalTrivia';
 function Vista() {
     const [data, setData] = useState([]);
     const [dataLlamado, setDataLlamado] = useState([]);
-    const { usuario, reproducirSonido, modalTrivia } =
-        useContext(ContextTurnero);
+    const {
+        usuario,
+        reproducirSonido,
+        modalTriviaActive,
+        activarModal,
+        desactivarModal,
+    } = useContext(ContextTurnero);
     const [modalTodos, setModalTodos] = useState(false);
 
     useEffect(() => {
@@ -94,9 +98,8 @@ function Vista() {
         setData([]);
         setModalTodos(false);
     };
-
     return (
-        <section className="flex flex-col justify-center items-start space-x-5">
+        <section className="flex flex-col justify-center items-start ">
             <div className=" flex flex-col w-full ">
                 {dataLlamado.length === 0 ? (
                     <div className="flex justify-center">
@@ -117,19 +120,51 @@ function Vista() {
                     })
                 )}
             </div>
-            <div className=" flex justify-center items-start space-x-6 ">
-                {!usuario && (
+            <div className=" flex justify-center items-start space-x-6 w-full">
+                {!usuario ? (
                     // cambiar w-1/2
                     <div className="hidden xl:flex justify-start w-1/2 items-center mt-6 ">
                         <div className=" w-4/4 ">
                             <Carrusel />
                         </div>
                     </div>
+                ) : (
+                    <div className=" flex flex-col justify-center mt-4">
+                        {data.length === 0 ? (
+                            <div className="flex flex-col justify-center">
+                                <p></p>
+                            </div>
+                        ) : (
+                            <div className="flex justify-between">
+                                <button
+                                    onClick={() => setModalTodos(true)}
+                                    className="rounded-md border border-radius border-black-500 bg-red-500 text-white p-2 mt-2"
+                                >
+                                    Limpiar Turnero
+                                </button>
+                            </div>
+                        )}
+                        {modalTriviaActive === true ? (
+                            <button
+                                className="rounded-md border border-radius border-black-500 bg-red-500 text-white p-2 mt-2"
+                                onClick={desactivarModal}
+                            >
+                                Desactivar trivia
+                            </button>
+                        ) : (
+                            <button
+                                className="rounded-md border border-radius border-black-500 bg-green-700 text-white p-2 mt-2"
+                                onClick={activarModal}
+                            >
+                                Activar trivia
+                            </button>
+                        )}
+                    </div>
                 )}
                 <div className="flex justify-center lg:hidden">
                     <EventosNuevos />
                 </div>
-                <section className=" mt-5 w-1/2">
+                <section className=' mt-5 w-1/2'>
                     <div className="hidden xl:flex flex-col justify-center">
                         <div className=" w-1/1 ">
                             {data.length === 0 ? (
@@ -147,26 +182,6 @@ function Vista() {
                             )}
                         </div>
                     </div>
-                    <div>
-                        {usuario ? (
-                            <div className="">
-                                {data.length === 0 ? (
-                                    <div className="flex justify-center">
-                                        <p></p>
-                                    </div>
-                                ) : (
-                                    <button
-                                        onClick={() => setModalTodos(true)}
-                                        className="rounded-md border border-radius border-black-500 bg-red-500 text-white p-1 mt-2"
-                                    >
-                                        Limpiar Turnero
-                                    </button>
-                                )}
-                            </div>
-                        ) : (
-                            <p></p>
-                        )}
-                    </div>
                 </section>
             </div>
             {modalTodos && (
@@ -175,7 +190,8 @@ function Vista() {
                     setModalTodos={setModalTodos}
                 />
             )}
-            {/* { <ModalTrivia /> } */}
+
+            {modalTriviaActive === true && !usuario && <ModalTrivia />}
         </section>
     );
 }

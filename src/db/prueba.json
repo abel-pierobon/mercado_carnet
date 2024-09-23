@@ -30,11 +30,6 @@
             "false_2": "Sobrepasando el límite de velocidad."
         },
         {
-            "pregunta": "En esta intersección Ud. conduce el auto rojo. ¿Debe:",
-            "true": "Detenerse obligatoriamente y ceder el paso a todos los vehículos (autos amarillo y verde).",
-            "false_1": "Detenerse solo para cederle el paso al auto amarillo."
-        },
-        {
             "pregunta": "¿En intersecciones semaforizadas debe avanzar con luz verde a su frente si del otro lado de la intersección hay un embotellamiento de tránsito?",
             "true": "No.",
             "false_1": "Es indiferente.",
@@ -46,12 +41,6 @@
             "false_1": "Los vehículos ya que la senda peatonal obliga a los peatones a cruzar por ella pero cuando el tránsito vehicular lo permita."
         },
         {
-            "pregunta": "¿Ante esta señal cuál es la conducta a seguir?",
-            "true": "Detener el vehículo en forma total.",
-            "false_1": "Disminuir la marcha para observar el tránsito.",
-            "false_2": "Continuar la marcha."
-        },
-        {
             "pregunta": "¿Cuál es la velocidad máxima de circulación en avenidas de la Ciudad de Córdoba?",
             "true": "60 Km/h.",
             "false_1": "40 Km/h.",
@@ -61,12 +50,6 @@
             "pregunta": "¿Los vehículos que giran en una esquina regulada por semáforos deben detener la marcha para ceder el paso a los peatones que están por cruzar la calzada?",
             "true": "Sí, siempre que el peatón cruce con luz verde a su frente.",
             "false_1": "No, los vehículos tienen siempre prioridad."
-        },
-        {
-            "pregunta": "¿Qué debe hacer un conductor antes de llegar a una intersección si desea girar a la izquierda o a la derecha?",
-            "true": "Advertir la maniobra con la luz de giro correspondiente conduciendo el vehículo hacia el carril por el que pretende girar con una antelación de 30 m.",
-            "false_1": "Advertir la maniobra con la luz de giro correspondiente conduciendo el vehículo hacia el carril por el que pretende girar con una antelación de 20 m.",
-            "false_2": "Advertir la maniobra con la luz de giro correspondiente conduciendo el vehículo hacia el carril por el que pretende girar con una antelación de 10 m."
         },
         {
             "pregunta": "¿Qué debe hacer Ud. si llegando a un cruce en el que el semáforo se encuentra en luz roja un inspector de tránsito le indica que continúe la marcha?",

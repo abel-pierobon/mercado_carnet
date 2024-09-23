@@ -21,7 +21,7 @@ function Footer() {
             <div className="hidden lg:flex justify-start  ">
                 <img
                     src="https://cordoba.gob.ar/wp-content/uploads/2020/08/logo-celeste-txt.svg"
-                    className="w-28 h-28 xl:w-52 xl:h-40"
+                    className="w-28 h-28 2xl:w-52 2xl:h-40"
                     alt=""
                     decoding="async"
                 ></img>
