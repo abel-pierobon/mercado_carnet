@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import {
     collection,
     addDoc,
@@ -12,13 +12,25 @@ import ModalEliminar from './ModalEliminar';
 import ModalEditarTurno from './ModalEditarTurno';
 import editar from './img/editar.png';
 import { ContextTurnero } from './ContextTurnero';
+
 function VerDisponibles({ turnos, puestoDeAtencion }) {
     const [modalEliminar, setModalEliminar] = useState(false);
     const [mensaje, setMensaje] = useState('');
     const [modalEditar, setModalEditar] = useState(false);
     const { activarModal, desactivarModal } = useContext(ContextTurnero);
+
+    // Usamos useRef para guardar el timeoutId
+    const timeoutId = useRef(null);
+
     const llamar = () => {
+        // Desactivamos el modal si está activo
         desactivarModal();
+
+        // Limpiamos el timeout anterior antes de crear uno nuevo
+        if (timeoutId.current) {
+            clearTimeout(timeoutId.current);
+        }
+
         const llamadoCollection = collection(db, 'llamados');
         const llamado = {
             nombre: turnos.datos.nombre,
@@ -26,6 +38,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
             puesto: puestoDeAtencion,
             timestamp: serverTimestamp(),
         };
+
         addDoc(llamadoCollection, llamado)
             .then((resultado) => {
                 console.log(resultado);
@@ -33,19 +46,23 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
             .catch((error) => {
                 console.error(error);
             });
-            setTimeout(() => {
-                activarModal();
-            }, 1800000);
-            setTimeout(() => {
-                desactivarModal();
-            }, 900000);
-            
+
+        // Establecemos un nuevo timeout para activar el modal después de 30 minutos
+        timeoutId.current = setTimeout(() => {
+            activarModal();
+        }, 1800000); // 30 minutos = 1800000ms
+
+        // También configuramos un timeout para desactivar el modal a los 15 minutos después de activarlo
+        timeoutId.current = setTimeout(() => {
+            desactivarModal();
+        }, 900000); // 15 minutos = 900000ms
+
         setMensaje('Llamado realizado con éxito');
         setTimeout(() => {
             setMensaje('');
         }, 12000);
     };
-    
+
     const handleModalizar = () => {
         setModalEliminar(true);
     };
