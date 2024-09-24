@@ -9,6 +9,7 @@ function WebMunicipalidad() {
                     title="Página Municipalidad"
                 />
             </div>
+            <p></p>
         </div>
     );
 }
