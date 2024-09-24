@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from 'react';
+import React, { useContext, useState } from 'react';
 import {
     collection,
     addDoc,
@@ -6,13 +6,14 @@ import {
     doc,
     deleteDoc,
     updateDoc,
+    getDoc
 } from 'firebase/firestore';
 import { db } from './db/datos';
 import ModalEliminar from './ModalEliminar';
 import ModalEditarTurno from './ModalEditarTurno';
 import editar from './img/editar.png';
 import { ContextTurnero } from './ContextTurnero';
-import { getDoc } from 'firebase/firestore';
+
 function VerDisponibles({ turnos, puestoDeAtencion }) {
     const [modalEliminar, setModalEliminar] = useState(false);
     const [mensaje, setMensaje] = useState('');
@@ -20,7 +21,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
     const { activarModal, desactivarModal, reproducirSonido } =
         useContext(ContextTurnero);
 
-    const llamar = () => {
+    const llamar = async () => {
         desactivarModal();
         const llamadoCollection = collection(db, 'llamados');
         const llamado = {
@@ -30,14 +31,37 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
             timestamp: serverTimestamp(),
         };
         reproducirSonido();
-        addDoc(llamadoCollection, llamado)
-            .then((resultado) => {
-                console.log(resultado);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
 
+        try {
+            // Agregar el nuevo documento a la colección 'llamados'
+            const resultado = await addDoc(llamadoCollection, llamado);
+            console.log("Llamado registrado:", resultado);
+
+            // Luego de registrar el llamado, actualizamos puestoLLamado
+            const turnoDocRef = doc(db, 'turnos', turnos.id);
+            const turnoSnapshot = await getDoc(turnoDocRef);
+
+            if (turnoSnapshot.exists()) {
+                const turnoData = turnoSnapshot.data();
+                const puestosActuales = turnoData.puestoLLamado || [];
+
+                // Si el puesto no está ya en el array, lo agregamos
+                const nuevosPuestos = puestosActuales.includes(puestoDeAtencion)
+                    ? puestosActuales
+                    : [...puestosActuales, puestoDeAtencion];
+
+                // Actualizamos el documento del turno con el nuevo array de puestos
+                await updateDoc(turnoDocRef, { puestoLLamado: nuevosPuestos });
+                console.log("Puesto agregado correctamente");
+            } else {
+                console.error("El turno no existe");
+            }
+
+        } catch (error) {
+            console.error("Error al procesar el llamado o actualizar el turno:", error);
+        }
+
+        // Limpia el mensaje después de 12 segundos
         setTimeout(() => {
             setMensaje('');
         }, 12000);
@@ -76,36 +100,6 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
             console.error('Error al actualizar el turno:', error);
         }
     };
-
-    const changePuestoLLamado = async () => {
-        try {
-            const turnoDocRef = doc(db, 'turnos', turnos.id);
-    
-            // Primero obtenemos el documento actual para obtener el array de puestoLLamado
-            const turnoSnapshot = await getDoc(turnoDocRef);
-    
-            if (turnoSnapshot.exists()) {
-                const turnoData = turnoSnapshot.data();
-                
-                // Verificamos si el array puestoLLamado ya existe, si no, inicializamos uno nuevo
-                const puestosActuales = turnoData.puestoLLamado || [];
-    
-                // Verificamos si el puesto ya está en el array, si no, lo agregamos
-                const nuevosPuestos = puestosActuales.includes(puestoDeAtencion)
-                    ? puestosActuales
-                    : [...puestosActuales, puestoDeAtencion];
-    
-                // Actualizamos Firestore con el nuevo array
-                await updateDoc(turnoDocRef, { puestoLLamado: nuevosPuestos });
-                console.log("Puesto agregado correctamente");
-            } else {
-                console.error("El turno no existe");
-            }
-        } catch (error) {
-            console.error('Error al actualizar el turno:', error);
-        }
-    };
-    
 
     const editarTurno = async (nuevosDatos) => {
         try {
@@ -156,9 +150,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                     puestoDeAtencion !== 'select' ? (
                         <button
                             className="rounded-md border border-radius border-black bg-green-500 p-1 mt-2 hover:bg-green-600"
-                            onClick={() => {
-                                llamar(), changePuestoLLamado();
-                            }}
+                            onClick={llamar}
                         >
                             Llamar a {puestoDeAtencion}
                         </button>
