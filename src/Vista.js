@@ -191,7 +191,7 @@ function Vista() {
                 />
             )}
 
-            {modalTriviaActive === true && !usuario && <ModalTrivia />}
+            {/* {modalTriviaActive === true && !usuario && <ModalTrivia />} */}
         </section>
     );
 }
