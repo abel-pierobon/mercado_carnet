@@ -64,7 +64,6 @@ function Vista() {
                 return turno;
             });
             setDataLlamado(aux);
-            reproducirSonido();
             if (aux.length > 0) {
                 // const { nombre, apellido, puesto } = aux[0];
                 // const voz = new SpeechSynthesisUtterance(
@@ -130,20 +129,7 @@ function Vista() {
                     </div>
                 ) : (
                     <div className=" flex flex-col justify-center mt-4">
-                        {data.length === 0 ? (
-                            <div className="flex flex-col justify-center">
-                                <p></p>
-                            </div>
-                        ) : (
-                            <div className="flex justify-between">
-                                <button
-                                    onClick={() => setModalTodos(true)}
-                                    className="rounded-md border border-radius border-black-500 bg-red-500 text-white p-2 mt-2"
-                                >
-                                    Limpiar Turnero
-                                </button>
-                            </div>
-                        )}
+                        
                         {modalTriviaActive === true ? (
                             <button
                                 className="rounded-md border border-radius border-black-500 bg-red-500 text-white p-2 mt-2"
@@ -158,6 +144,20 @@ function Vista() {
                             >
                                 Activar trivia
                             </button>
+                        )}
+                        {data.length === 0 ? (
+                            <div className="flex flex-col justify-center">
+                                <p></p>
+                            </div>
+                        ) : (
+                            <div className="flex justify-between">
+                                <button
+                                    onClick={() => setModalTodos(true)}
+                                    className="rounded-md border border-radius border-black-500 bg-red-500 text-white p-2 mt-2"
+                                >
+                                    Limpiar Turnero
+                                </button>
+                            </div>
                         )}
                     </div>
                 )}
@@ -191,7 +191,7 @@ function Vista() {
                 />
             )}
 
-            {/* {modalTriviaActive === true && !usuario && <ModalTrivia />} */}
+            {modalTriviaActive === true && !usuario && <ModalTrivia />}
         </section>
     );
 }

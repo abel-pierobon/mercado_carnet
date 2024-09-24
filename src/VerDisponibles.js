@@ -12,25 +12,16 @@ import ModalEliminar from './ModalEliminar';
 import ModalEditarTurno from './ModalEditarTurno';
 import editar from './img/editar.png';
 import { ContextTurnero } from './ContextTurnero';
-
+import { getDoc } from 'firebase/firestore';
 function VerDisponibles({ turnos, puestoDeAtencion }) {
     const [modalEliminar, setModalEliminar] = useState(false);
     const [mensaje, setMensaje] = useState('');
     const [modalEditar, setModalEditar] = useState(false);
-    const { activarModal, desactivarModal } = useContext(ContextTurnero);
-
-    // Usamos useRef para guardar el timeoutId
-    const timeoutId = useRef(null);
+    const { activarModal, desactivarModal, reproducirSonido } =
+        useContext(ContextTurnero);
 
     const llamar = () => {
-        // Desactivamos el modal si está activo
         desactivarModal();
-
-        // Limpiamos el timeout anterior antes de crear uno nuevo
-        if (timeoutId.current) {
-            clearTimeout(timeoutId.current);
-        }
-
         const llamadoCollection = collection(db, 'llamados');
         const llamado = {
             nombre: turnos.datos.nombre,
@@ -38,7 +29,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
             puesto: puestoDeAtencion,
             timestamp: serverTimestamp(),
         };
-
+        reproducirSonido();
         addDoc(llamadoCollection, llamado)
             .then((resultado) => {
                 console.log(resultado);
@@ -47,17 +38,6 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                 console.error(error);
             });
 
-        // Establecemos un nuevo timeout para activar el modal después de 30 minutos
-        timeoutId.current = setTimeout(() => {
-            activarModal();
-        }, 1800000); // 30 minutos = 1800000ms
-
-        // También configuramos un timeout para desactivar el modal a los 15 minutos después de activarlo
-        timeoutId.current = setTimeout(() => {
-            desactivarModal();
-        }, 900000); // 15 minutos = 900000ms
-
-        setMensaje('Llamado realizado con éxito');
         setTimeout(() => {
             setMensaje('');
         }, 12000);
@@ -97,6 +77,36 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
         }
     };
 
+    const changePuestoLLamado = async () => {
+        try {
+            const turnoDocRef = doc(db, 'turnos', turnos.id);
+    
+            // Primero obtenemos el documento actual para obtener el array de puestoLLamado
+            const turnoSnapshot = await getDoc(turnoDocRef);
+    
+            if (turnoSnapshot.exists()) {
+                const turnoData = turnoSnapshot.data();
+                
+                // Verificamos si el array puestoLLamado ya existe, si no, inicializamos uno nuevo
+                const puestosActuales = turnoData.puestoLLamado || [];
+    
+                // Verificamos si el puesto ya está en el array, si no, lo agregamos
+                const nuevosPuestos = puestosActuales.includes(puestoDeAtencion)
+                    ? puestosActuales
+                    : [...puestosActuales, puestoDeAtencion];
+    
+                // Actualizamos Firestore con el nuevo array
+                await updateDoc(turnoDocRef, { puestoLLamado: nuevosPuestos });
+                console.log("Puesto agregado correctamente");
+            } else {
+                console.error("El turno no existe");
+            }
+        } catch (error) {
+            console.error('Error al actualizar el turno:', error);
+        }
+    };
+    
+
     const editarTurno = async (nuevosDatos) => {
         try {
             const turnoDocRef = doc(db, 'turnos', turnos.id);
@@ -108,15 +118,15 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
     };
 
     return (
-        <section>
+        <section >
             <div
                 key={turnos.id}
-                className={`grid md:grid-cols-1 border border-black shadow-xl p-4 rounded-md bg-gray-200 ${
+                className={`grid md:grid-cols-1 border border-black shadow-xl p-4 rounded-md  ${
                     turnos.consultorioMedico === true &&
                     puestoDeAtencion === 'Consultorio Medico'
                         ? 'hidden'
                         : ''
-                }`}
+                } ${turnos.puestoLLamado?.length > 0 && turnos.puestoLLamado.includes(puestoDeAtencion) ? 'bg-blue-400' : 'bg-gray-100'}`}
             >
                 {puestoDeAtencion !== 'Consultorio Medico' ? (
                     <button className="px-1 flex justify-end ">
@@ -146,7 +156,9 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                     puestoDeAtencion !== 'select' ? (
                         <button
                             className="rounded-md border border-radius border-black bg-green-500 p-1 mt-2 hover:bg-green-600"
-                            onClick={llamar}
+                            onClick={() => {
+                                llamar(), changePuestoLLamado();
+                            }}
                         >
                             Llamar a {puestoDeAtencion}
                         </button>
@@ -198,7 +210,6 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                         editarTurno={editarTurno}
                     />
                 )}
-                
             </div>
         </section>
     );
