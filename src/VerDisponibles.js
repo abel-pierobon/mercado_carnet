@@ -30,12 +30,12 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
             puesto: puestoDeAtencion,
             timestamp: serverTimestamp(),
         };
-        reproducirSonido();
-
+        
         try {
             // Agregar el nuevo documento a la colección 'llamados'
             const resultado = await addDoc(llamadoCollection, llamado);
             console.log("Llamado registrado:", resultado);
+            // reproducirSonido();
 
             // Luego de registrar el llamado, actualizamos puestoLLamado
             const turnoDocRef = doc(db, 'turnos', turnos.id);
@@ -120,7 +120,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                     puestoDeAtencion === 'Consultorio Medico'
                         ? 'hidden'
                         : ''
-                } ${turnos.puestoLLamado?.length > 0 && turnos.puestoLLamado.includes(puestoDeAtencion) ? 'bg-blue-400' : 'bg-gray-100'}`}
+                } ${turnos.puestoLLamado?.length > 0 && turnos.puestoLLamado.includes(puestoDeAtencion) ? 'bg-blue-400 opacity-85' : 'bg-gray-100'}`}
             >
                 {puestoDeAtencion !== 'Consultorio Medico' ? (
                     <button className="px-1 flex justify-end ">

@@ -31,7 +31,6 @@ function ContextTurneroProvider(props) {
 
     const updateUsuario = (user) => {
         setUsuario(user);
-        console.log(usuario);
     };
 
     useEffect(() => {

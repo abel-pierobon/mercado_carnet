@@ -4,10 +4,7 @@ import { Toaster } from 'sonner';
 import Main from './Main';
 import NavBar from './NavBar';
 import Footer from './Footer';
-
 function App() {
-    console.log(`Resolución de la pantalla: ${window.screen.width} x ${window.screen.height}`);
-
     return (
         <BrowserRouter>
             <ContextTurneroProvider>
@@ -20,6 +17,7 @@ function App() {
                         closeOnClick={true}
                         richColors
                     />
+                    
                     <Main />
                     <Footer />
             </ContextTurneroProvider>

@@ -64,6 +64,7 @@ function Vista() {
                 return turno;
             });
             setDataLlamado(aux);
+            reproducirSonido();
             if (aux.length > 0) {
                 // const { nombre, apellido, puesto } = aux[0];
                 // const voz = new SpeechSynthesisUtterance(
