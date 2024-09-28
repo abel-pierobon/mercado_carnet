@@ -3,8 +3,10 @@ import Disponibles from './Disponibles';
 import { Route, Routes } from 'react-router-dom';
 import Vista from './Vista';
 import Login from './Login';
+import Teorico from './Teorico';
 import { useContext } from 'react';
 import { ContextTurnero } from './ContextTurnero';
+import Pendientes from './Pendientes';
 
 function Main() {
     const { usuario } = useContext(ContextTurnero);
@@ -31,6 +33,15 @@ function Main() {
                     path="/disponibles"
                     element={verificarAutenticacion(<Disponibles />)}
                 />
+                <Route
+                    path="/teorico"
+                    element={verificarAutenticacion(<Teorico />)}
+                />
+                <Route
+                    path="/pendientes"
+                    element={verificarAutenticacion(<Pendientes />)}
+                />
+
                 <Route path="/login" element={<Login />} />
             </Routes>
         </main>

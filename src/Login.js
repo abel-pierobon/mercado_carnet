@@ -1,28 +1,25 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { useState,useContext } from 'react';
-import { ContextTurnero } from "./ContextTurnero";
+import { useState, useContext } from 'react';
+import { ContextTurnero } from './ContextTurnero';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {updateUsuario}= useContext(ContextTurnero);
-  const navigate= useNavigate()
-  const [error, setError]=useState('')
+  const { updateUsuario } = useContext(ContextTurnero);
+  const navigate = useNavigate();
+  const [error, setError] = useState('');
+
   const handleLogin = async () => {
     try {
       const auth = getAuth();
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      console.log('Usuario autenticado con éxito', user);
       updateUsuario({ uid: user.uid, displayName: user.displayName, email: user.email });
-      navigate('/');
       localStorage.setItem('userId', user.uid);
       localStorage.setItem('userDisplayName', user.displayName);
       localStorage.setItem('userEmail', user.email);
-      
     } catch (error) {
-      console.error('Error al autenticar el usuario', error);
       setError('Usuario y/o contraseña inválida');
       setTimeout(() => {
         setError('');
@@ -30,11 +27,22 @@ function Login() {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Evita el comportamiento de envío de formulario por defecto
-    handleLogin();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await handleLogin();
+      const auth = getAuth();
+      const currentUser = auth.currentUser;
+      
+      if (currentUser.email === 'teoricocarnet@gmail.com') {
+        navigate('/teorico');
+      } else {
+        navigate('/disponibles');
+      }
+    } catch (error) {
+      console.error('Error al intentar iniciar sesión:', error);
+    }
   };
-
 
   return (
     <>

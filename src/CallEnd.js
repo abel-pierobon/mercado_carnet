@@ -10,8 +10,8 @@ function CallEnd({ turno, esUltimo }) {
         >
             <div className="flex 2xl:flex-col justify-center items-center">
                 <div className="flex justify-center items-center">
-                    <h2 className="text-center font-black uppercase m-2  text-sm md:text-2xl 2xl:text-9xl text-shadow">
-                        {turnoLlamado.substring(0, 25)}
+                    <h2 className={turnoLlamado.length > 25 ? 'text-center font-black uppercase m-2  text-sm md:text-2xl 2xl:text-8xl text-shadow' : "text-center font-black uppercase m-2  text-sm md:text-2xl 2xl:text-9xl text-shadow"}>
+                        {turnoLlamado}
                     </h2>
                 </div>
                 <h2 className="text-center mdtext-start font-black uppercase m-3  text-sm md:text-2xl 2xl:text-8xl text-shadow">

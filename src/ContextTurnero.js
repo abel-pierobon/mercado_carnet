@@ -104,7 +104,7 @@ function ContextTurneroProvider(props) {
             setClickButton,
             modalTriviaActive, // Este ahora contiene el valor de isActive
             activarModal,
-            desactivarModal 
+            desactivarModal
         }}>
             {props.children}
         </Provider>

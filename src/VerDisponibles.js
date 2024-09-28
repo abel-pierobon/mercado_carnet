@@ -6,7 +6,7 @@ import {
     doc,
     deleteDoc,
     updateDoc,
-    getDoc
+    getDoc,
 } from 'firebase/firestore';
 import { db } from './db/datos';
 import ModalEliminar from './ModalEliminar';
@@ -18,8 +18,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
     const [modalEliminar, setModalEliminar] = useState(false);
     const [mensaje, setMensaje] = useState('');
     const [modalEditar, setModalEditar] = useState(false);
-    const { activarModal, desactivarModal, reproducirSonido } =
-        useContext(ContextTurnero);
+    const { desactivarModal } = useContext(ContextTurnero);
 
     const llamar = async () => {
         desactivarModal();
@@ -30,11 +29,11 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
             puesto: puestoDeAtencion,
             timestamp: serverTimestamp(),
         };
-        
+
         try {
             // Agregar el nuevo documento a la colección 'llamados'
             const resultado = await addDoc(llamadoCollection, llamado);
-            console.log("Llamado registrado:", resultado);
+            console.log('Llamado registrado:', resultado);
             // reproducirSonido();
 
             // Luego de registrar el llamado, actualizamos puestoLLamado
@@ -52,13 +51,15 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
 
                 // Actualizamos el documento del turno con el nuevo array de puestos
                 await updateDoc(turnoDocRef, { puestoLLamado: nuevosPuestos });
-                console.log("Puesto agregado correctamente");
+                console.log('Puesto agregado correctamente');
             } else {
-                console.error("El turno no existe");
+                console.error('El turno no existe');
             }
-
         } catch (error) {
-            console.error("Error al procesar el llamado o actualizar el turno:", error);
+            console.error(
+                'Error al procesar el llamado o actualizar el turno:',
+                error,
+            );
         }
 
         // Limpia el mensaje después de 12 segundos
@@ -112,7 +113,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
     };
 
     return (
-        <section >
+        <section>
             <div
                 key={turnos.id}
                 className={`grid md:grid-cols-1 border border-black shadow-xl p-4 rounded-md  ${
@@ -123,14 +124,37 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                 } ${turnos.puestoLLamado?.length > 0 && turnos.puestoLLamado.includes(puestoDeAtencion) ? 'bg-blue-400 opacity-85' : 'bg-gray-100'}`}
             >
                 {puestoDeAtencion !== 'Consultorio Medico' ? (
-                    <button className="px-1 flex justify-end ">
-                        <img
-                            src={editar}
-                            alt="Editar"
-                            onClick={() => setModalEditar(true)}
-                            className=" border border-black rounded-md p-1 hover:bg-gray-300"
-                        />
-                    </button>
+                    <div className="flex justify-between">
+                        <div className="font-bold border rounded-lg border-black py-1 bg-white px-2">
+                            {turnos.datos.tramite === 'Teórico pendiente' ? (
+                                <h3 className="text-green-700">
+                                    Exámen Teórico: Aprobado
+                                </h3>
+                            ) : !turnos.examen ? (
+                                <h3 className="text-orange-500">
+                                    Exámen Teórico: Pendiente
+                                </h3>
+                            ) : (
+                                <h3
+                                    className={
+                                        turnos.nota === 'Aprobado'
+                                            ? 'text-green-700'
+                                            : 'text-red-500'
+                                    }
+                                >
+                                    Exámen Teórico: {turnos.nota}
+                                </h3>
+                            )}
+                        </div>
+                        <button className="px-1 flex justify-end ">
+                            <img
+                                src={editar}
+                                alt="Editar"
+                                onClick={() => setModalEditar(true)}
+                                className=" border border-black rounded-md p-1 hover:bg-gray-300"
+                            />
+                        </button>
+                    </div>
                 ) : null}
                 <div className="flex justify-center">
                     <h2 className="text-start font-black uppercase m-3 text-lg">

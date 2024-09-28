@@ -47,7 +47,6 @@ function Carga() {
                 console.error(error);
             });
     };
-
     return (
         <div className='formulario'>
             <h2 className='flex justify-center text-2xl font-black'>Completa el formulario para cargar un turno</h2>
@@ -104,9 +103,9 @@ function Carga() {
                     >
                         <option value="sin trámite asignado">Seleccione un trámite</option>
                         <option value="Renovacion">Renovación</option>
-                        <option value="Antecedentes">Antecedentes</option>
                         <option value="Duplicado">Duplicado</option>
-
+                        <option value="Teórico pendiente">Teórico pendiente</option>
+                        <option value="Antecedentes">Antecedentes</option>
                     </select>
                 </div>
                 
