@@ -3,7 +3,7 @@ import instagram from './instagram.png';
 import facebook from '../src/img/facebook.png';
 function EventosNuevos() {
     return (
-        <div className="flex flex-col justify-center mt-16 border border-gray-500 p-4 rounded-lg shadow-lg bg-gradient-to-t from-[#59a0e7] to-white   ">
+        <div className="flex flex-col justify-center items-center mt-2 border border-gray-500 p-4 rounded-lg shadow-lg bg-[#59a0e7] ">
             <h2 className="text-center font-bold">Seguinos en nuestras redes..</h2>
             <div className="flex justify-center space-x-3">
 

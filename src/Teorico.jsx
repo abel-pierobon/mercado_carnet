@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { db } from './db/datos';
 import { collection, query, onSnapshot, orderBy } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 import TeoricoDisponibles from './TeoricoDisponibles';
-
+import { ContextTurnero } from './ContextTurnero';
 function Teorico() {
     const [data, setData] = useState([]);
     const { id } = useParams();
-
+    const { usuario } = useContext(ContextTurnero);
     useEffect(() => {
         const turnosCollection = collection(db, 'turnos');
         const q = query(turnosCollection, orderBy('fecha', 'asc'));
@@ -26,9 +26,8 @@ function Teorico() {
     }, [id]);
     
     const fechaHoy = new Date();
-
     return (
-        <section className="flex flex-col gap-2 mt-6">
+        <section className={usuario.email === 'teoricocarnet@gmail.com' ?"flex flex-col gap-2 mt-6" : "hidden"}>
             <h2 className="text-center font-bold uppercase m-3  text-sm md:text-2xl ">{`Trámites del día ${fechaHoy.toLocaleDateString()}`}</h2>
             {data.length === 0 ? (
                 <div className="flex justify-center">

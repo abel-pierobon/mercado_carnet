@@ -47,6 +47,7 @@ function Carga() {
                 console.error(error);
             });
     };
+    
     return (
         <div className='formulario'>
             <h2 className='flex justify-center text-2xl font-black'>Completa el formulario para cargar un turno</h2>

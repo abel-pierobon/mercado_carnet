@@ -42,7 +42,7 @@ function TeoricoDisponibles({ turnos }) {
                     <h3 className="font-black uppercase ">Trámite pendiente Aprobado</h3>
                 ): (
                     turnos.examen === true ? (
-                        <span className={turnos.nota === 'Aprobado' ? "font-black uppercase text-green-500" : "font-black uppercase text-red-500"}>{turnos.nota}</span>
+                        <span className={turnos.nota === 'Aprobado' ? "font-black uppercase text-green-700" : "font-black uppercase text-red-500"}>{turnos.nota}</span>
                     ) : (
                         <span className="font-black uppercase text-orange-500">Pendiente</span>
                     )

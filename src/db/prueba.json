@@ -93,11 +93,6 @@
             "false_2": "Indica disminuir la velocidad."
         },
         {
-            "pregunta": "¿Al circular por la vía pública conduciendo un automotor debo portar la licencia de conducir en vigencia?",
-            "true": "Sí.",
-            "false_1": "No."
-        },
-        {
             "pregunta": "¿Por qué lugar y en qué sentido deberá caminar el peatón en las zonas donde no hay vereda?",
             "true": "Fuera de la calzada en el sentido contrario a la circulación vehicular.",
             "false_1": "Sobre la calzada en el mismo sentido de la circulación vehicular.",
@@ -108,12 +103,6 @@
             "true": "La obligación de ceder el paso.",
             "false_1": "El sentido de circulación de los vehículos.",
             "false_2": "Que circula por una avenida."
-        },
-        {
-            "pregunta": "¿En una intersección no regulada por señales ni semáforos ni agente de tránsito qué vehículo tiene prioridad de paso?",
-            "true": "El rojo.",
-            "false_1": "El amarillo.",
-            "false_2": "Es indistinto."
         },
         {
             "pregunta": "Al llegar a una intersección sin señalizar como conductor debo:",
@@ -148,29 +137,74 @@
             "true": "Obedecer al agente de tránsito ya que sus órdenes prevalecen sobre las normas.",
             "false_1": "Detenerme ya que el semáforo está en rojo."
         },
-                {
-                    "pregunta": "¿En qué caso puede Ud. circular habiéndosele vencido el I.T.V. de su vehículo?",
-                    "true": "En ninguno.",
-                    "false_1": "Dentro de los 15 días posteriores al vencimiento."
-                },
-                {
-                    "pregunta": "La luz del semáforo está roja pero la flecha de giro derecho está en verde. Esto le indica:",
-                    "true": "Que debo girar obligatoriamente a la derecha si estoy colocado en ese carril.",
-                    "false_1": "Que debo detenerme cualquiera sea la dirección que vaya a seguir.",
-                    "false_2": "Que está prohibido girar a la derecha."
-                },
-                {
-                    "pregunta": "¿Deberá Ud. circular por la banquina para que otro conductor pueda adelantarle?",
-                    "true": "No, como norma general está prohibida la circulación por la banquina excepto en situación de emergencia.",
-                    "false_1": "Sí, porque así tendrá más espacio y el adelantamiento se realizará con mayor seguridad.",
-                    "false_2": "Sí, pero solamente en vías de un solo carril para cada sentido."
-                },
-                {
-                    "pregunta": "En una calzada sin señalización, ¿puede estacionar en:",
-                    "true": "El costado derecho atento al sentido de circulación y a no menos de 5 m de la senda peatonal demarcada o imaginaria.",
-                    "false_1": "El costado izquierdo atento al sentido de circulación y a no menos de 5 m de la senda peatonal demarcada o imaginaria.",
-                    "false_2": "Es indistinto, puedo hacerlo donde exista espacio."
-                }
-
+        {
+            "pregunta": "¿En qué caso puede Ud. circular habiéndosele vencido el I.T.V. de su vehículo?",
+            "true": "En ninguno.",
+            "false_1": "Dentro de los 15 días posteriores al vencimiento."
+        },
+        {
+            "pregunta": "La luz del semáforo está roja pero la flecha de giro derecho está en verde. Esto le indica:",
+            "true": "Que debo girar obligatoriamente a la derecha si estoy colocado en ese carril.",
+            "false_1": "Que debo detenerme cualquiera sea la dirección que vaya a seguir.",
+            "false_2": "Que está prohibido girar a la derecha."
+        },
+        {
+            "pregunta": "¿Deberá Ud. circular por la banquina para que otro conductor pueda adelantarle?",
+            "true": "No, como norma general está prohibida la circulación por la banquina excepto en situación de emergencia.",
+            "false_1": "Sí, porque así tendrá más espacio y el adelantamiento se realizará con mayor seguridad.",
+            "false_2": "Sí, pero solamente en vías de un solo carril para cada sentido."
+        },
+        {
+            "pregunta": "En una calzada sin señalización, ¿puede estacionar en:",
+            "true": "El costado derecho atento al sentido de circulación y a no menos de 5 m de la senda peatonal demarcada o imaginaria.",
+            "false_1": "El costado izquierdo atento al sentido de circulación y a no menos de 5 m de la senda peatonal demarcada o imaginaria.",
+            "false_2": "Es indistinto, puedo hacerlo donde exista espacio."
+        },
+        {
+            "pregunta": "Ud. conductor utiliza las luces altas:",
+            "true": "De manera excepcional cuando las situaciones del tránsito lo requieran cambiando a luz baja al cruce con otro vehículo que circula de frente y cuando me aproximo al vehículo que circula delante de mí.",
+            "false_1": "Cuando la luz natural es insuficiente.",
+            "false_2": "En cualquier momento."
+        },
+        {
+            "pregunta": "¿Hay que encender las luces de giro siempre que se produzca un cambio de carril?",
+            "true": "Sí, tanto de día como de noche para efectuar todo cambio de carril.",
+            "false_1": "No, solamente si es de noche."
+        },
+        {
+            "pregunta": "¿Está permitido mientras conduzco utilizar sistema de comunicación telefónica manual?",
+            "true": "No.",
+            "false_1": "Sí."
+        },
+        {
+            "pregunta": "En la Ciudad de Córdoba, ¿es obligatorio que los menores de 10 años viajen?",
+            "true": "En el asiento trasero sujetados con cinturón de seguridad.",
+            "false_1": "En el asiento delantero sujetados con cinturón de seguridad.",
+            "false_2": "Es indistinto siempre que estén sujetados con cinturón de seguridad."
+        },
+        {
+            "pregunta": "El uso del cinturón de seguridad es obligatorio para:",
+            "true": "Todos los ocupantes del vehículo en movimiento.",
+            "false_1": "El conductor.",
+            "false_2": "El conductor y acompañante."
+        },
+        {
+            "pregunta": "El vehículo que Ud. conduce debe exhibir sus chapas patentes:",
+            "true": "Colocadas fijas en el lugar correspondiente, limpias y en buen estado de conservación que permita su legibilidad.",
+            "false_1": "Puedo llevarlas en el parabrisas y luneta trasera.",
+            "false_2": "Es indistinto siempre que las pueda exhibir frente a un control de los agentes de tránsito."
+        },
+        {
+            "pregunta": "Ud. conductor de automóvil particular radicado en la Ciudad de Córdoba tiene la obligación de realizar la Inspección Técnica Vehicular (I.T.V.):",
+            "true": "Si el vehículo tiene una antigüedad mayor a dos años y renovarla anualmente.",
+            "false_1": "Si el vehículo tiene una antigüedad mayor a 3 años y renovarla semestralmente.",
+            "false_2": "Si el vehículo tiene una antigüedad mayor a 2 años y renovarla semestralmente."
+        },
+        {
+            "pregunta": "En proximidad de establecimientos escolares, deportivos o de gran afluencia de público, la velocidad no deberá superar los:",
+            "true": "30 Km/h.",
+            "false_1": "40 Km/h.",
+            "false_2": "60 Km/h."
+        }
     ]
 }

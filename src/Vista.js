@@ -16,6 +16,8 @@ import EventosNuevos from './EventosNuevos';
 import Carrusel from './Carrusel';
 import ModalLLamados from './ModalLLamados';
 import ModalTrivia from './ModalTrivia';
+import VerTriviaMovil from './VerTriviaMovil';
+import TriviaMovil from './TriviaMovil';
 function Vista() {
     const [data, setData] = useState([]);
     const [dataLlamado, setDataLlamado] = useState([]);
@@ -25,6 +27,8 @@ function Vista() {
         modalTriviaActive,
         activarModal,
         desactivarModal,
+        activarTriviaMovil,
+        modalTriviaMovil,
     } = useContext(ContextTurnero);
     const [modalTodos, setModalTodos] = useState(false);
 
@@ -68,7 +72,7 @@ function Vista() {
             if (aux.length > 0) {
                 // const { nombre, apellido, puesto } = aux[0];
                 // const voz = new SpeechSynthesisUtterance(
-                //     `Atencion, ${nombre} ${apellido},dirigirse a , ${puesto}`,
+                //     Atencion, ${nombre} ${apellido},dirigirse a , ${puesto},
                 // );
                 // voz.lang = 'es-LA';
                 // voz.volume = 1;
@@ -120,17 +124,16 @@ function Vista() {
                     })
                 )}
             </div>
-            <div className=" flex justify-center items-start space-x-6 w-full">
+            <div className= {usuario ? "flex justify-center items-start space-x-6 w-full": " flex justify-center items-start space-x-2"}>
                 {!usuario ? (
                     // cambiar w-1/2
-                    <div className="hidden xl:flex justify-start w-1/2 items-center mt-6 ">
+                    <div className="hidden lg:flex justify-start lg:w-1/2 items-center mt-6 ">
                         <div className=" w-4/4 ">
                             <Carrusel />
                         </div>
                     </div>
                 ) : (
-                    <div className=" flex flex-col justify-center mt-4">
-                        
+                    <div className=" flex flex-col justify-center mt-4 ">
                         {modalTriviaActive === true ? (
                             <button
                                 className="rounded-md border border-radius border-black-500 bg-red-500 text-white p-2 mt-2"
@@ -146,11 +149,7 @@ function Vista() {
                                 Activar trivia
                             </button>
                         )}
-                        {data.length === 0 ? (
-                            <div className="flex flex-col justify-center">
-                                <p></p>
-                            </div>
-                        ) : (
+                        {data.length === 0 && 
                             <div className="flex justify-between">
                                 <button
                                     onClick={() => setModalTodos(true)}
@@ -159,15 +158,22 @@ function Vista() {
                                     Limpiar Turnero
                                 </button>
                             </div>
-                        )}
+                        }
                     </div>
                 )}
-                <div className="flex justify-center lg:hidden">
-                    <EventosNuevos />
+                <div className="flex flex-col mt-4 justify-center items-center w-full lg:hidden ">
+                    <button
+                        onClick={activarTriviaMovil}
+                        className="rounded-md border border-radius border-black-500 bg-green-700 text-white p-2 mt-2"
+                    >
+                    {modalTriviaMovil ? 'finalizar trivia' : 'Realizar trivia'}
+                    </button>
+                    {!modalTriviaMovil && <EventosNuevos />}
+                    {modalTriviaMovil && <TriviaMovil />}
                 </div>
-                <section className=' mt-5 w-1/2'>
+                <section className=" mt-5 lg:w-1/2">
                     <div className="hidden xl:flex flex-col justify-center">
-                        <div className=" w-1/1 ">
+                        <div className=" w-1/1 space-y-1 ">
                             {data.length === 0 ? (
                                 <div className="flex justify-center">
                                     <p className="font-bold texto-aparecer-desaparecer"></p>
@@ -181,6 +187,9 @@ function Vista() {
                                     );
                                 })
                             )}
+                            <div className=" xl:flex mt-10">
+                                <VerTriviaMovil />
+                            </div>
                         </div>
                     </div>
                 </section>

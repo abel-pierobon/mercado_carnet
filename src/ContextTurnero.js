@@ -14,7 +14,8 @@ function ContextTurneroProvider(props) {
 
     const [turnoActual, setTurnoActual] = useState('');
     const [usuario, setUsuario] = useState('');
-    const [modalTriviaActive, setModalTriviaActive] = useState(false); // Cambiado a booleano porque isActive es un valor booleano
+    const [modalTriviaActive, setModalTriviaActive] = useState(false); 
+    const [modalTriviaMovil, setModalTriviaMovil] = useState(false);
 
     useEffect(() => {
         localStorage.setItem('puestoDeAtencion', puestoDeAtencion);
@@ -90,6 +91,9 @@ function ContextTurneroProvider(props) {
             console.error('Error al desactivar el modal: ', error);
         });
     }
+    const activarTriviaMovil = () => {
+        setModalTriviaMovil(!modalTriviaMovil);
+    };
     
     return (
         <Provider value={{
@@ -104,7 +108,9 @@ function ContextTurneroProvider(props) {
             setClickButton,
             modalTriviaActive, // Este ahora contiene el valor de isActive
             activarModal,
-            desactivarModal
+            desactivarModal,
+            activarTriviaMovil,
+            modalTriviaMovil
         }}>
             {props.children}
         </Provider>

@@ -1,14 +1,15 @@
 import { collection, doc, deleteDoc } from 'firebase/firestore';
 import { query, onSnapshot, orderBy } from 'firebase/firestore';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { db } from './db/datos';
 import { useParams } from 'react-router-dom';
 import cestoBasura from './img/cestoBasura.png';
+import { ContextTurnero } from './ContextTurnero';
 
 function Pendientes() {
     const { id } = useParams();
     const [dataPendientes, setDataPendientes] = useState([]);
-
+    const { usuario } = useContext(ContextTurnero);
     useEffect(() => {
         const turnosCollection = collection(db, 'pendientes');
         const q = query(turnosCollection, orderBy('fecha', 'asc'));
@@ -36,7 +37,7 @@ function Pendientes() {
         }
     };
     return (
-        <div>
+        <div className={usuario.email === 'teoricocarnet@gmail.com' ? "flex flex-col gap-2 mt-6" : "hidden"}>
             <h2 className="text-center font-bold uppercase m-3 text-sm md:text-2xl">
                 Trámites Pendientes
             </h2>
