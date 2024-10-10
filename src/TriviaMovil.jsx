@@ -57,7 +57,7 @@ function TriviaMovil() {
     ].sort(() => Math.random() - 0.5); // Mezcla las opciones
 
     return (
-        <div className="flex items-center justify-center ">
+        <div className="flex flex-col items-center justify-center ">
             <div className=" flex items-center justify-center z-50  bg-opacity-95 mt-6">
                 <div className="bg-gray-100 p-2 border border-[#97192f] rounded-xl ">
                     <p className="mb-4 font-bold">
@@ -97,6 +97,8 @@ function TriviaMovil() {
                     )}
                 </div>
             </div>
+            <p className="text-start text-xs uppercase font-bold mt-4">fuente: <span className="italic font-normal">Manual del buen conductor</span> </p>
+
         </div>
     );
 }
