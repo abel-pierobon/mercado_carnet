@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import Timbre from './Timbre.mp3';
-import { collection, query, onSnapshot } from 'firebase/firestore';
+import { collection, query, onSnapshot, getDoc  } from 'firebase/firestore';
 import { db } from './db/datos';
 import { doc, updateDoc } from 'firebase/firestore';
 
@@ -92,8 +92,36 @@ function ContextTurneroProvider(props) {
         });
     }
     const activarTriviaMovil = () => {
-        setModalTriviaMovil(!modalTriviaMovil);
+        setModalTriviaMovil(true);
     };
+    const desactivarTriviaMovil = () => {
+        setModalTriviaMovil(false);
+    };
+    async function sumarVistas() {
+        const countDocRef = doc(db, 'count', '54vNIEzGTwDhXWeYO8EK'); 
+        
+        try {
+            // Obtener el documento actual
+            const countDocSnap = await getDoc(countDocRef);
+            
+            if (countDocSnap.exists()) {
+                // Obtener el valor actual de countTrivia
+                const currentCount = countDocSnap.data().countTrivia;
+    
+                // Actualizar el valor de countTrivia en el documento
+                await updateDoc(countDocRef, {
+                    countTrivia: parseInt(currentCount) + 1 // Asegúrate de que el valor sea un número
+                });
+    
+                console.log('Sumado correctamente');
+            } else {
+                console.log('El documento no existe');
+            }
+        } catch (error) {
+            console.error('Error al sumar: ', error);
+        }
+    }
+    
     
     return (
         <Provider value={{
@@ -110,7 +138,9 @@ function ContextTurneroProvider(props) {
             activarModal,
             desactivarModal,
             activarTriviaMovil,
-            modalTriviaMovil
+            desactivarTriviaMovil,
+            modalTriviaMovil,
+            sumarVistas
         }}>
             {props.children}
         </Provider>

@@ -1,4 +1,4 @@
-import {  useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import prueba from './db/prueba.json';
 
 function TriviaMovil() {
@@ -10,7 +10,7 @@ function TriviaMovil() {
     useEffect(() => {
         // Mezcla las preguntas al cargar los datos
         const preguntasMezcladas = [...prueba.preguntas].sort(
-            () => Math.random() - 0.5,
+            () => Math.random() - 0.5
         );
         setData(preguntasMezcladas);
     }, []);
@@ -19,15 +19,6 @@ function TriviaMovil() {
         setIndiceActivo(0);
         setRespuestaSeleccionada(null);
         setRespuestaCorrecta(false);
-
-        // Cambiar automáticamente la pregunta cada 15 segundos
-        const interval = setInterval(() => {
-            setIndiceActivo((prev) => (prev + 1) % data.length);
-            setRespuestaSeleccionada(null);
-            setRespuestaCorrecta(false);
-        }, 15000);
-
-        return () => clearInterval(interval);
     }, [data]);
 
     useEffect(() => {
@@ -42,11 +33,14 @@ function TriviaMovil() {
         if (respuestaSeleccionada === null) {
             setRespuestaSeleccionada(respuesta);
 
-            // Mostrar la respuesta correcta después de 10 segundos
+            // Mostrar la respuesta correcta durante 3 segundos
             setTimeout(() => {
                 setRespuestaSeleccionada(null);
                 setRespuestaCorrecta(false);
-            }, 15000);
+
+                // Cambiar a la siguiente pregunta
+                setIndiceActivo((prev) => (prev + 1) % data.length);
+            }, 6000); // Espera 3 segundos antes de pasar a la siguiente pregunta
         }
     };
 
@@ -71,7 +65,7 @@ function TriviaMovil() {
                                 respuestaCorrecta
                                     ? 'bg-green-500 text-white'
                                     : respuestaSeleccionada === opcion &&
-                                        !respuestaCorrecta
+                                    !respuestaCorrecta
                                     ? 'bg-red-500 text-white'
                                     : 'bg-gray-100'
                             }`}
@@ -97,8 +91,9 @@ function TriviaMovil() {
                     )}
                 </div>
             </div>
-            <p className="text-start text-xs uppercase font-bold mt-4">fuente: <span className="italic font-normal">Manual del buen conductor</span> </p>
-
+            <p className="text-start text-xs uppercase font-bold mt-4">
+                fuente: <span className="italic font-normal">Manual del buen conductor</span>
+            </p>
         </div>
     );
 }

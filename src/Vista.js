@@ -28,7 +28,9 @@ function Vista() {
         activarModal,
         desactivarModal,
         activarTriviaMovil,
+        desactivarTriviaMovil,
         modalTriviaMovil,
+        sumarVistas,
     } = useContext(ContextTurnero);
     const [modalTodos, setModalTodos] = useState(false);
 
@@ -124,7 +126,13 @@ function Vista() {
                     })
                 )}
             </div>
-            <div className= {usuario ? "flex justify-center items-start space-x-6 w-full": " flex justify-center items-start space-x-2"}>
+            <div
+                className={
+                    usuario
+                        ? 'flex justify-center items-start space-x-6 w-full'
+                        : ' flex justify-center items-start space-x-2'
+                }
+            >
                 {!usuario ? (
                     // cambiar w-1/2
                     <div className="hidden lg:flex justify-start lg:w-1/2 items-center mt-6 ">
@@ -149,7 +157,7 @@ function Vista() {
                                 Activar trivia
                             </button>
                         )}
-                        {data.length === 0 && 
+                        {data.length === 0 && (
                             <div className="flex justify-between">
                                 <button
                                     onClick={() => setModalTodos(true)}
@@ -158,16 +166,23 @@ function Vista() {
                                     Limpiar Turnero
                                 </button>
                             </div>
-                        }
+                        )}
                     </div>
                 )}
                 <div className="flex flex-col mt-4 justify-center items-center w-full lg:hidden ">
+                {!modalTriviaMovil ?(
                     <button
-                        onClick={activarTriviaMovil}
+                        onClick={() => [activarTriviaMovil(), sumarVistas()]}
                         className="rounded-md border border-radius border-black-500 bg-green-700 text-white p-2 mt-2"
-                    >
-                    {modalTriviaMovil ? 'finalizar trivia' : 'Realizar trivia'}
+                    > 
+                        ActivarTrivia
                     </button>
+                        ): (
+                        <button
+                            onClick={desactivarTriviaMovil}
+                            className="rounded-md border border-radius border-black-500 bg-green-700 text-white p-2 mt-2"
+                        > Finalizar Trivia</button>
+                    )}
                     {!modalTriviaMovil && <EventosNuevos />}
                     {modalTriviaMovil && <TriviaMovil />}
                 </div>
