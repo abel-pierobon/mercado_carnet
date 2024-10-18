@@ -45,7 +45,7 @@ function ModalTrivia() {
     };
 
     return (
-        <div className="fixed inset-x-0 inset-y-0  flex items-center justify-center z-50 bg-gray-900  bg-opacity-95 ">
+        <div className=" hidden md:fixed inset-x-0 inset-y-0  md:flex items-center justify-center z-50 bg-gray-900  bg-opacity-95 ">
             <div className=" bg-gradient-to-t from-[#59a0e7] to-[#004b81] rounded-lg p-6 mx-48 shadow-lg shadow-[#97192f]">
                 {/* <h3 className="text-center font-semibold text-7xl uppercase text-white text-shadow">Trivia Guia del buen conductor</h3> */}
                 {data.length > 0 && (

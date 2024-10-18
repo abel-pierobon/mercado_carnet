@@ -157,31 +157,28 @@ function Vista() {
                                 Activar trivia
                             </button>
                         )}
-                        {data.length === 0 && (
-                            <div className="flex justify-between">
-                                <button
-                                    onClick={() => setModalTodos(true)}
-                                    className="rounded-md border border-radius border-black-500 bg-red-500 text-white p-2 mt-2"
-                                >
-                                    Limpiar Turnero
-                                </button>
-                            </div>
-                        )}
+                       
                     </div>
                 )}
                 <div className="flex flex-col mt-4 justify-center items-center w-full lg:hidden ">
-                {!modalTriviaMovil ?(
-                    <button
-                        onClick={() => [activarTriviaMovil(), sumarVistas()]}
-                        className="rounded-md border border-radius border-black-500 bg-green-700 text-white p-2 mt-2"
-                    > 
-                        ActivarTrivia
-                    </button>
-                        ): (
+                    {!modalTriviaMovil ? (
+                        <button
+                            onClick={() => [
+                                activarTriviaMovil(),
+                                sumarVistas(),
+                            ]}
+                            className="rounded-md border border-radius border-black-500 bg-green-700 text-white p-2 mt-2"
+                        >
+                            ActivarTrivia
+                        </button>
+                    ) : (
                         <button
                             onClick={desactivarTriviaMovil}
                             className="rounded-md border border-radius border-black-500 bg-green-700 text-white p-2 mt-2"
-                        > Finalizar Trivia</button>
+                        >
+                            {' '}
+                            Finalizar Trivia
+                        </button>
                     )}
                     {!modalTriviaMovil && <EventosNuevos />}
                     {modalTriviaMovil && <TriviaMovil />}
@@ -202,9 +199,20 @@ function Vista() {
                                     );
                                 })
                             )}
-                            <div className=" xl:flex mt-10">
+                            {usuario ? (
+                                data.length > 0 &&
+                                <button
+                                    className="rounded-md border border-radius border-black-500 bg-red-500 text-white p-2 mt-2"
+                                    onClick={eliminarTodosLosLlamados}
+                                >
+                                    Eliminar todos los llamados
+                                </button>
+                            ): (
+                                <div className=" xl:flex mt-10">
                                 <VerTriviaMovil />
                             </div>
+                            )}
+                            
                         </div>
                     </div>
                 </section>
@@ -216,7 +224,7 @@ function Vista() {
                 />
             )}
 
-            {modalTriviaActive === true && !usuario && <ModalTrivia />}
+            {modalTriviaActive && !usuario && <ModalTrivia />}
         </section>
     );
 }
