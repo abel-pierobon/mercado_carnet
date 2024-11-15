@@ -86,9 +86,9 @@ function Disponibles() {
                     </option>
                 </select>
                 
-                <NavLink to={'/agendados'} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md border-black border-2">
+                {/* <NavLink to={'/agendados'} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md border-black border-2">
                     Ver Agenda de turnos
-                </NavLink>
+                </NavLink> */}
             </div>
 
             {loadingTime && (
