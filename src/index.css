@@ -86,8 +86,6 @@ main {
     background-color: #004b81;
     margin-top: 5px;
     /* background: radial-gradient(circle,#f4c000,#f07e07); */
-    border: 4px solid; /* Establece el grosor del borde */
-    border-image: linear-gradient(to right, #97192f, #f4c000) 1;
 }
 .llamados {
     background-color: #38b2e6;

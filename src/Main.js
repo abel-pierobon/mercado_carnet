@@ -7,6 +7,7 @@ import Teorico from './Teorico';
 import { useContext } from 'react';
 import { ContextTurnero } from './ContextTurnero';
 import Pendientes from './Pendientes';
+import VerAgendados from './VerAgendados';
 
 function Main() {
     const { usuario } = useContext(ContextTurnero);
@@ -40,6 +41,10 @@ function Main() {
                 <Route
                     path="/pendientes"
                     element={verificarAutenticacion(<Pendientes />)}
+                />
+                <Route
+                    path="/agendados"
+                    element={verificarAutenticacion(<VerAgendados />)}
                 />
 
                 <Route path="/login" element={<Login />} />

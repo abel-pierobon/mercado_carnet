@@ -12,6 +12,8 @@ import { useParams } from 'react-router-dom';
 import VerDisponibles from './VerDisponibles';
 import { ContextTurnero } from './ContextTurnero';
 import ModalTodosLosTurnos from './ModalTodosLosTurnos';
+import VerAgendados from './VerAgendados';
+import { NavLink } from 'react-router-dom';
 function Disponibles() {
     const [data, setData] = useState([]);
     const [loadingTime, setLoadingTime] = useState('');
@@ -83,6 +85,10 @@ function Disponibles() {
                         Consultorio Médico
                     </option>
                 </select>
+                
+                <NavLink to={'/agendados'} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md border-black border-2">
+                    Ver Agenda de turnos
+                </NavLink>
             </div>
 
             {loadingTime && (
