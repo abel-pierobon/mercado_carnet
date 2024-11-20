@@ -12,8 +12,8 @@ import { useParams } from 'react-router-dom';
 import VerDisponibles from './VerDisponibles';
 import { ContextTurnero } from './ContextTurnero';
 import ModalTodosLosTurnos from './ModalTodosLosTurnos';
-import VerAgendados from './VerAgendados';
-import { NavLink } from 'react-router-dom';
+// import VerAgendados from './VerAgendados';
+// import { NavLink } from 'react-router-dom';
 function Disponibles() {
     const [data, setData] = useState([]);
     const [loadingTime, setLoadingTime] = useState('');

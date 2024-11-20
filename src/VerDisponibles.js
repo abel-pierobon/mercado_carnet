@@ -72,9 +72,9 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
         setModalEliminar(true);
     };
 
-    const handleCloseModalizar = () => {
-        setModalEliminar(false);
-    };
+    // const handleCloseModalizar = () => {
+    //     setModalEliminar(false);
+    // };
 
     const handleElegirPuesto = () => {
         setMensaje('Elige primero una sección');

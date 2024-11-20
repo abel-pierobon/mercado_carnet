@@ -52,12 +52,12 @@ function Carga() {
     
     return (
         <div className='formulario'>
-            <div className='flex justify-end'>
+            {/* <div className='flex justify-end'>
                 <button className='rounded-md border border-radius border-black bg-green-500 font-bold p-2 mt-2 hover:bg-green-700'
                 onClick={() => setModalAgendar(true)}>
                     Agendar Turno
                 </button>
-            </div>
+            </div> */}
             <h2 className='flex justify-center text-2xl font-black'>Completa el formulario para cargar un turno</h2>
             <form className="max-w-md mx-auto my-8 font-black ">
                 <div className="mb-4">
