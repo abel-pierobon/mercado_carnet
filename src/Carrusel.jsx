@@ -33,7 +33,7 @@ const Carrusel = () => {
 
         return () => clearInterval(intervalo); 
     }, [componentes.length]);
-
+    console.log(componentes.length);
     return (
         <div className="border border-black rounded-xl shadow-lg shadow-gray-500 h-full w-full">
             {componentes.length > 0 ? (

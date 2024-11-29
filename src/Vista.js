@@ -157,7 +157,6 @@ function Vista() {
                                 Activar trivia
                             </button>
                         )}
-                       
                     </div>
                 )}
                 <div className="flex flex-col mt-4 justify-center items-center w-full lg:hidden ">
