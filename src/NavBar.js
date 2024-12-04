@@ -15,6 +15,7 @@ function NavBar() {
     const handleToggleMenu = () => {
         setDesplegar(!desplegar);
     };
+    console.log(usuario.email);
     return (
         <div className="flex justify-between font-bold shadow-md shadow-gray-700 rounded-b-3xl rounded-t-sm mx-1 nav">
             <NavLink to={'/'}>
@@ -36,7 +37,7 @@ function NavBar() {
                 ):(
 
                 
-                usuario.email === 'carnetmercado@gmail.com' ? (
+                usuario.email === 'carnetadm@gmail.com' || usuario.email === 'carnetmercado@gmail.com'   ? (
                     <div className={`${desplegar ? 'abierto' : 'cerrado'}`}>
                         <NavLink to={'/'} className="mx-6 text-xl p-2 ">
                             Inicio

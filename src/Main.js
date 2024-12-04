@@ -13,14 +13,14 @@ function Main() {
     const { usuario } = useContext(ContextTurnero);
 
     // Función para verificar la autenticación del usuario
-    const verificarAutenticacion = (componente) => {
+    function verificarAutenticacion(componente) {
         if (usuario) {
             return componente;
         } else {
             // Si no hay usuario autenticado, redirigir a la página de inicio de sesión
             return <Login />;
         }
-    };
+    }
 
     return (
         <main className="p-2 grow mx-10 fondoMain ">

@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect, useContext } from 'react';
+import { ContextTurnero } from './ContextTurnero';
 function ModalEditarTurno({ setModalEditar, turnos, editarTurno }) {
+    const { usuario } = useContext(ContextTurnero);
     const [persona, setPersona] = useState({
         nombre: '',
         apellido: '',
         tramite: '',
         horaTurno: '',
+        favorito: 'no',
     });
 
     // Cargar los datos del turno cuando se abra el modal
@@ -16,6 +18,7 @@ function ModalEditarTurno({ setModalEditar, turnos, editarTurno }) {
                 apellido: turnos.datos.apellido,
                 tramite: turnos.datos.tramite,
                 horaTurno: turnos.datos.horaTurno,
+                favorito: turnos.datos.favorito,
             });
         }
     }, [turnos]);
@@ -94,6 +97,19 @@ function ModalEditarTurno({ setModalEditar, turnos, editarTurno }) {
                         required
                     />
                 </div>
+                {usuario.email === 'carnetadm@gmail.com' && (
+                    <div>
+                        <select
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-black-900 leading-tight focus:outline-none focus:shadow-outline mb-2"
+                            name="favorito"
+                            value={persona.favorito}
+                            onChange={handleInputChange}
+                        >
+                            <option value="no">No</option>
+                            <option value="si">Si</option>
+                        </select>
+                    </div>
+                )}
                     <div className="flex justify-center space-x-3">
                         <button
                             type="button"

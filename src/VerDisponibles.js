@@ -13,13 +13,14 @@ import ModalEliminar from './ModalEliminar';
 import ModalEditarTurno from './ModalEditarTurno';
 import editar from './img/editar.png';
 import { ContextTurnero } from './ContextTurnero';
+import estrella from './img/estrella.png';
 
 function VerDisponibles({ turnos, puestoDeAtencion }) {
     const [modalEliminar, setModalEliminar] = useState(false);
     const [mensaje, setMensaje] = useState('');
     const [modalEditar, setModalEditar] = useState(false);
-    const { desactivarModal } = useContext(ContextTurnero);
-
+    const { desactivarModal, usuario } = useContext(ContextTurnero);
+    console.log(usuario.email);
     const llamar = async () => {
         desactivarModal();
         const llamadoCollection = collection(db, 'llamados');
@@ -146,6 +147,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                                 </h3>
                             )}
                         </div>
+                            
                         <button className="px-1 flex justify-end ">
                             <img
                                 src={editar}
@@ -156,7 +158,14 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                         </button>
                     </div>
                 ) : null}
-                <div className="flex justify-center">
+                <div className="flex justify-center items-center">
+                {turnos.datos.favorito === 'si' && (
+                                <img
+                                    src={estrella}
+                                    alt="Favorito"
+                                    className=" w-6 h-6"
+                                />
+                            )}
                     <h2 className="text-start font-black uppercase m-3 text-lg">
                         {turnos.datos.apellido}
                     </h2>
