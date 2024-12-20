@@ -18,6 +18,7 @@ import ModalLLamados from './ModalLLamados';
 import ModalTrivia from './ModalTrivia';
 import VerTriviaMovil from './VerTriviaMovil';
 import TriviaMovil from './TriviaMovil';
+import Saludos from './Saludos';
 function Vista() {
     const [data, setData] = useState([]);
     const [dataLlamado, setDataLlamado] = useState([]);
@@ -185,13 +186,7 @@ function Vista() {
                 <section className=" mt-5 lg:w-1/2">
                     <div className="hidden xl:flex flex-col justify-center">
                         <div className=" w-1/1 space-y-1 ">
-                            {data.length === 0 ? (
-                                <div className="flex justify-center">
-                                    <p className="font-bold texto-aparecer-desaparecer"></p>
-                                </div>
-                            ) : data.length === 1 ? (
-                                <p></p>
-                            ) : (
+                            {data.length > 2 && (
                                 data.map((item, i) => {
                                     return (
                                         i > 0 && <Call key={i} turno={item} />
@@ -211,8 +206,8 @@ function Vista() {
                                 <VerTriviaMovil />
                             </div>
                             )}
-                            
                         </div>
+                        <Saludos />
                     </div>
                 </section>
             </div>
