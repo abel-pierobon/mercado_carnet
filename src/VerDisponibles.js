@@ -20,7 +20,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
     const [mensaje, setMensaje] = useState('');
     const [modalEditar, setModalEditar] = useState(false);
     const { desactivarModal, usuario } = useContext(ContextTurnero);
-    console.log(usuario.email);
+    
     const llamar = async () => {
         desactivarModal();
         const llamadoCollection = collection(db, 'llamados');
@@ -52,7 +52,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
 
                 // Actualizamos el documento del turno con el nuevo array de puestos
                 await updateDoc(turnoDocRef, { puestoLLamado: nuevosPuestos });
-                console.log('Puesto agregado correctamente');
+                
             } else {
                 console.error('El turno no existe');
             }
@@ -120,7 +120,7 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                 className={`grid md:grid-cols-1 border border-black shadow-xl p-4 rounded-md  ${
                     turnos.consultorioMedico === true &&
                     puestoDeAtencion === 'Consultorio Medico'
-                        ? 'hidden'
+                        ? 'bg-gray-500 opacity-95'
                         : ''
                 } ${turnos.puestoLLamado?.length > 0 && turnos.puestoLLamado.includes(puestoDeAtencion) ? 'bg-blue-400 opacity-85' : 'bg-gray-100'}`}
             >
@@ -209,9 +209,9 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
                             Marcar como atendido
                         </button>
                     ) : (
-                        <p className="text-black text-center font-black p-2 llamadoTurno">
+                        <p className="text-white text-center font-black p-2 ">
                             {' '}
-                            Turno atendido
+                            Turno Atendido
                         </p>
                     )
                 ) : (
