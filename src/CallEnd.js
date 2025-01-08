@@ -21,21 +21,11 @@ function CallEnd({ turno, esUltimo }) {
                     </h2>
                 </div>
                 <div className="flex justify-center items-center w-full">
-                <img
-                        src={gorro}
-                        width={100}
-                        alt="Gorro"
-                        className="w-24 h-24 flex justify-end"
-                    />
+                
                     <h2 className="text-center mdtext-start font-black uppercase m-3  text-sm md:text-2xl 2xl:text-8xl text-shadow">
                         {turno.puesto}
                     </h2>
-                    <img
-                        src={gorro}
-                        width={100}
-                        alt="Gorro"
-                        className="w-24 h-24 flex justify-end"
-                    />
+                    
                 </div>
             </div>
         </div>

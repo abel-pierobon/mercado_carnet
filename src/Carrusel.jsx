@@ -36,7 +36,7 @@ const Carrusel = () => {
     console.log(componentes.length);
     return (
         <div className="border border-black rounded-xl shadow-lg shadow-gray-500 h-full w-full">
-            {componentes.length > 0 ? (
+            {componentes ? (
                 <img
                     src={componentes[indiceActivo].imagen} // Usar el campo 'imagen' del documento
                     alt="Carrusel"

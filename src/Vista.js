@@ -207,7 +207,6 @@ function Vista() {
                             </div>
                             )}
                         </div>
-                        <Saludos />
                     </div>
                 </section>
             </div>
