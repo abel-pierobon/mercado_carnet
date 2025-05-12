@@ -27,7 +27,7 @@ function Main() {
             <Routes>
                 {/* <Route path="/" element={<Vista />} /> */}
                 <Route path="/" element={<Mantenimiento />} /> 
-                <Route
+                {/* <Route
                     path="/carga"
                     element={verificarAutenticacion(<Carga />)}
                 />
@@ -48,7 +48,8 @@ function Main() {
                     element={verificarAutenticacion(<VerAgendados />)}
                 />
 
-                <Route path="/login" element={<Login />} />
+                <Route path="/login" element={<Login />} /> */}
+                <Route path="/login" element={<Mantenimiento />} /> 
             </Routes>
         </main>
     );
