@@ -14,7 +14,6 @@ function Carga() {
         horaTurno: '',
         favorito: 'no',
     });
-    console.log(usuario);
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setPersona({

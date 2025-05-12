@@ -34,7 +34,6 @@ function VerDisponibles({ turnos, puestoDeAtencion }) {
         try {
             // Agregar el nuevo documento a la colección 'llamados'
             const resultado = await addDoc(llamadoCollection, llamado);
-            console.log('Llamado registrado:', resultado);
             // reproducirSonido();
 
             // Luego de registrar el llamado, actualizamos puestoLLamado

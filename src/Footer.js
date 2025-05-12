@@ -2,7 +2,7 @@ import React from 'react';
 
 function Footer() {
     return (
-        <footer className="flex justify-around items-center bg-gray-200 h-[5%] 2xl:h-[10%]  ">
+        <footer className="flex justify-around items-center rounded-t-xl border border-gray-700 bg-[#59a0e7] h-[5%] 2xl:h-[10%]  ">
             <div className="flex justify-start ">
                 {/* <img
                     className=" hidden lg:flex justify-center items-center lg:w-12 lg:h-12 2xl:w-20 2xl:h-20  "

@@ -15,7 +15,6 @@ function NavBar() {
     const handleToggleMenu = () => {
         setDesplegar(!desplegar);
     };
-    console.log(usuario.email);
     return (
         <div className="flex justify-between font-bold shadow-md shadow-gray-700 rounded-b-3xl rounded-t-sm mx-1 nav">
             <NavLink to={'/'}>

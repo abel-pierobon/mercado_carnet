@@ -8,7 +8,7 @@ import { useContext } from 'react';
 import { ContextTurnero } from './ContextTurnero';
 import Pendientes from './Pendientes';
 import VerAgendados from './VerAgendados';
-
+import Mantenimiento from './Mantenimiento';
 function Main() {
     const { usuario } = useContext(ContextTurnero);
 
@@ -25,7 +25,8 @@ function Main() {
     return (
         <main className="p-2 grow mx-10 fondoMain ">
             <Routes>
-                <Route path="/" element={<Vista />} />
+                {/* <Route path="/" element={<Vista />} /> */}
+                <Route path="/" element={<Mantenimiento />} /> 
                 <Route
                     path="/carga"
                     element={verificarAutenticacion(<Carga />)}
